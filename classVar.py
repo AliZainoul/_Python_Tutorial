@@ -1,62 +1,77 @@
-# BEGIN CLASS
 class MyClass:
-    class_variable = 999999
+    class_variable = 999
     
     def __init__(self, instance_variable):
         self.instance_variable = instance_variable
 
     @classmethod
     def print_class_variable(cls):
-        print("cls.class_variable: ", cls.class_variable)
+        print("cls.class_variable:", cls.class_variable)
 
     def print_instance_variable(self):
-        print("object.instance_variable: ", self.instance_variable)
+        print("object.instance_variable:", self.instance_variable)
 
-    def print_object_class_variable(self):
-        print("object.class_variable: ", self.class_variable)
-# END CLASS
+    @staticmethod
+    def print_separator():
+        print("-" * 69)
 
-# UTILITY FUNCTION
-def printLine():
-    print("--------------------------------")
+    @staticmethod
+    def print_all_info(obj1, obj2):
+        MyClass.print_class_variable()      
+        obj1.print_instance_variable()      
+        obj1.print_class_variable()         
+        obj2.print_instance_variable()      
+        obj2.print_class_variable()        
+        MyClass.print_separator()
 
-printLine()
-print("Before Instanciation: ")
-# Accès à la variable de classe
-MyClass.print_class_variable()      # Output: 999999
-printLine()
+# Instantiation and usage
+MyClass.print_separator()
 
-# Instanciation d'objets
+print("Before Instantiation:")
+MyClass.print_class_variable()
+MyClass.print_separator()
+
 obj1 = MyClass(20)
 obj2 = MyClass(30)
+print("After Instantiation:")
+MyClass.print_all_info(obj1, obj2)
 
-print("After Instanciation: ")
-# Accès à la variable de classe à partir des instances
-MyClass.print_class_variable()      # Output: 999999
-obj1.print_instance_variable()      # Output: 20
-obj1.print_object_class_variable()  # Output: 999999
-obj2.print_instance_variable()      # Output: 30
-obj2.print_object_class_variable()  # Output: 999999
-printLine()
-
-# Modification de la variable de classe
+# Modifying the class variable
 MyClass.class_variable = 69
+print("After Modification of class_variable:")
+MyClass.print_all_info(obj1, obj2)
 
-print("After Modification of class_variable: ")
-# Accès à la variable de classe à partir des instances
-MyClass.print_class_variable()      # Output: 69
-obj1.print_instance_variable()      # Output: 20
-obj1.print_object_class_variable()  # Output: 69
-obj2.print_instance_variable()      # Output: 30
-obj2.print_object_class_variable()  # Output: 69
-printLine()
-
-# Modification de la variable de classe à partir des instances
+# Modifying the class variable from instances
 obj1.class_variable = 369
-print("After Modification of class_variable via obj1: ")
-MyClass.print_class_variable()      # Output: 69
-obj1.print_instance_variable()      # Output: 20
-obj1.print_object_class_variable()  # Output: 369
-obj2.print_instance_variable()      # Output: 30
-obj2.print_object_class_variable()  # Output: 69
-printLine()
+print("After Modification of class_variable via obj1:")
+MyClass.print_all_info(obj1, obj2)
+
+
+'''
+# OUTPUT:
+---------------------------------------------------------------------
+Before Instantiation:
+cls.class_variable: 999
+---------------------------------------------------------------------
+After Instantiation:
+cls.class_variable: 999
+object.instance_variable: 20
+cls.class_variable: 999
+object.instance_variable: 30
+cls.class_variable: 999
+---------------------------------------------------------------------
+After Modification of class_variable:
+cls.class_variable: 69
+object.instance_variable: 20
+cls.class_variable: 69
+object.instance_variable: 30
+cls.class_variable: 69
+---------------------------------------------------------------------
+After Modification of class_variable via obj1:
+cls.class_variable: 69
+object.instance_variable: 20
+cls.class_variable: 69
+object.instance_variable: 30
+cls.class_variable: 69
+---------------------------------------------------------------------
+'''
