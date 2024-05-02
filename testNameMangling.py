@@ -1,21 +1,24 @@
-class MyClass:
-    def __init__(self):
-        self.__private_attr = 42
+# nameMangling and Method Overriding example
+  
+class Parent:  
+    def __init__(self):  
+        self.__method()
+          
+    # Public method of class Parent
+    def method(self):  
+        print("In parent class")  
+    
+    # Private copy of original method()  
+    __method = method
+    
+    # Or make method directly private: def __method(self) ...
+class Child(Parent):  
+    # Public method of class Child
+    def method(self):          
+        print("In Child class") 
+    # Provides new signature for method() but does not break __init__()
 
-    def __private_method(self):
-        print("This is a private method")
-
-# Création d'une instance de la classe
-obj = MyClass()
-
-# Accès à l'attribut privé à l'extérieur de la classe
-# print(obj.__private_attr)  # Cela lèvera une AttributeError
-
-# Appel à la méthode privée à l'extérieur de la classe
-# obj.__private_method()  # Cela lèvera également une AttributeError
-
-# Accès à l'attribut privé en utilisant le name mangling
-print(obj._MyClass__private_attr)  # Cela affichera 42
-
-# Appel à la méthode privée en utilisant le name mangling
-obj._MyClass__private_method()  # Cela affichera "This is a private method"
+          
+# Driver's code 
+childObject = Child() 
+childObject.method() 
