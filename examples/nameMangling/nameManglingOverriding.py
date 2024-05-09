@@ -5,12 +5,12 @@ class Parent:
           
     # Public method of class Parent
     def method(self):  
-        print("In parent class")  
+        print("In Parent class")  
     
     # Private copy of original method()  
     __method = method
-    
     # Or make method directly private: def __method(self) ...
+
 class Child(Parent):  
     # Public method of class Child
     def method(self):          
@@ -19,5 +19,5 @@ class Child(Parent):
 
           
 # Driver's code 
-childObject = Child() 
-childObject.method() 
+childObject = Child()   # Output: In Parent class
+childObject.method()    # Output: In Child class
