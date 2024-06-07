@@ -19,5 +19,10 @@ def bar():
 
 bar()
 # Output : Inside bar()'s Local Scope: global_var =  2
+
 print("Global Scope *after* calling bar(): global_var = ", global_var)
 # Output : Global Scope *after* calling bar(): global_var =  2
+
+global_var = 3
+print("Global Scope *after* modifying: global_var = ", global_var)
+# Output : Global Scope *after* calling bar(): global_var =  3
