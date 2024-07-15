@@ -7,3 +7,6 @@ def add(x: int, y: int) -> int:
     int: The sum of the two numbers. 
     """
     return x+y
+
+
+print(add.__doc__)
