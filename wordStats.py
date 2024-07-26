@@ -12,7 +12,7 @@ def filter_element(word: str) -> str:
         str: The filtered word with specified characters removed.
     """
     # Regex pattern for characters to remove
-    reg = r"[+?&'()§!_-%¨`@#$€,;.:/=[*]"
+    reg = r"[+?&'()§!_-%¨`@#$€,;.:/=*]"
     # Filter out characters from the word using strip
     filtered_word = word.strip(reg)
     # TODO: replace with a good RegEx pattern!
