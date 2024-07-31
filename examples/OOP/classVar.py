@@ -11,6 +11,9 @@ class MyClass:
     def print_class_variable(cls):
         print("cls.class_variable:", cls.class_variable)
 
+    def print_class_variable_of_obj(self):
+        print("self.class_variable:", self.class_variable)
+
     def print_instance_variable(self):
         print("object.instance_variable:", self.instance_variable)
 
@@ -18,9 +21,12 @@ class MyClass:
     def print_all_info(obj1, obj2):
         MyClass.print_class_variable()      
         obj1.print_instance_variable()      
-        obj1.print_class_variable()         
+        obj1.print_class_variable_of_obj()         
         obj2.print_instance_variable()      
-        obj2.print_class_variable()        
+        obj2.print_class_variable_of_obj()   
+        print(id(MyClass.class_variable))
+        print(id(obj1.class_variable))  
+        print(id(obj2.class_variable))  
         print_separator()
 
 
