@@ -1,3 +1,6 @@
+def print_separator():
+    print("-" * 69)
+
 class MyClass:
     class_variable = 999
     
@@ -12,24 +15,21 @@ class MyClass:
         print("object.instance_variable:", self.instance_variable)
 
     @staticmethod
-    def print_separator():
-        print("-" * 69)
-
-    @staticmethod
     def print_all_info(obj1, obj2):
         MyClass.print_class_variable()      
         obj1.print_instance_variable()      
         obj1.print_class_variable()         
         obj2.print_instance_variable()      
         obj2.print_class_variable()        
-        MyClass.print_separator()
+        print_separator()
+
+
+print_separator()
 
 # Instantiation and usage
-MyClass.print_separator()
-
 print("Before Instantiation:")
 MyClass.print_class_variable()
-MyClass.print_separator()
+print_separator()
 
 obj1 = MyClass(20)
 obj2 = MyClass(30)
