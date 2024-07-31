@@ -1,5 +1,5 @@
 # module .py
-def function():
+def function() -> None:
     print("Function called")
 
 if __name__ == "__main__":
