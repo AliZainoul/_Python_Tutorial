@@ -22,11 +22,11 @@ books = {
         "year": 1885}
 }
 
-# def print_books(books):
-#     for book in books:
-#         print(f"{book}, {books[f'{book}']}")
-
 def print_books(books):
+    for book in books:
+        print(f"{book}, {books[f'{book}']}")
+
+def available_books(books):
     for book_name, book_name_specs in books.items():
         yield book_name, book_name_specs
     
@@ -59,7 +59,7 @@ def remove_book(library, book_name):
 
 if __name__ == "__main__":
     print_line("Printing Books initially: ")
-    for book in print_books(books):
+    for book in available_books(books):
         print(book)
 
     a_book="Harry Potter"
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     add_book(books, a_book)
 
     print_line(f"Printing Books after adding book: {a_book}")
-    for book in print_books(books):
+    for book in available_books(books):
         print(book)
 
     target_book = "Les Misérables"
@@ -81,7 +81,7 @@ if __name__ == "__main__":
     book_to_delete = "Harry Potter"
     print_line(f"Deleting book : {book_to_delete}")
     print(remove_book(books, book_to_delete))
-    for book in print_books(books):
+    for book in available_books(books):
         print(book)
 
     book_to_delete = "x"
