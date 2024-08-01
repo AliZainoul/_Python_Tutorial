@@ -29,7 +29,6 @@ def print_books(books):
 def available_books(books):
     for book_name, book_name_specs in books.items():
         yield book_name, book_name_specs
-    
 
 # def find_book(library, book_name: str):
 #     if (library.get(book_name, None)):

@@ -12,15 +12,13 @@ class Library:
     def __init__(self, books: Dict[str, Dict[str, int]]):
         self.books = books
 
-    def print_books(self, books):
-        for book in books:
-            print(f"{book}, {books[f'{book}']}")
+    def print_books(self):
+        for book in self.books:
+            print(f"{book}, {self.books[f'{book}']}")
 
     def available_books(self):
         for book_name, book_name_specs in self.books.items():
-            print(type(self.books))
             yield book_name, book_name_specs
-        
 
     # def find_book(library, book_name: str):
     #     if (library.get(book_name, None)):
