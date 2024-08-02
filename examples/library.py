@@ -1,5 +1,5 @@
 def print_line(s) -> None:
-    print("\n"+ "-"*18 + s + "-"*18)
+    print("\n"+ "-"*12 + s + "-"*12)
 
 books = {
     "Les Misérables" :{
@@ -30,12 +30,6 @@ def available_books(books):
     for book_name, book_name_specs in books.items():
         yield book_name, book_name_specs
 
-# def find_book(library, book_name: str):
-#     if (library.get(book_name, None)):
-#         print(f"Found book : {book_name} --> {library[f'{book_name}']}")
-# find_book(books, "Les Misérables")
-# find_book(books, "Les ")
-
 def add_book(library, book_name) -> None:
     if is_present(library, book_name):
         print(f"The {book_name} is already present in library.")
@@ -45,6 +39,10 @@ def add_book(library, book_name) -> None:
         book_specs['year'] = input(f"Please enter the year of the book {book_name} : ") 
         library[book_name] = book_specs
         print(f"{book_name} was successfully added to library: {library[book_name]}")
+
+# def find_book(library, book_name: str):
+#     if (library.get(book_name, None)):
+#         print(f"Found book : {book_name} --> {library[f'{book_name}']}")
 
 def find_book(library, book_name: str):
     return (library.get(book_name, "Not found"))
@@ -56,6 +54,7 @@ def remove_book(library, book_name):
     return library.pop(book_name, "Book not found.")
 
 
+# BEGIN MAIN
 if __name__ == "__main__":
     print_line("Printing Books initially: ")
     for book in available_books(books):
@@ -86,3 +85,4 @@ if __name__ == "__main__":
     book_to_delete = "x"
     print_line(f"Tempting to delete book : {book_to_delete}")
     print(remove_book(books, book_to_delete))
+# END MAIN

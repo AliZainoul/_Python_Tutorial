@@ -1,23 +1,17 @@
+import json
 from typing import Dict
 
 def print_line(s) -> None:
     print("\n"+ "-"*12 + s + "-"*12)
-
-# BEGIN CLASS BOOK
-class Book:
-    def __init__(self, book_name: str, book_name_specs: Dict[str, int]):
-        self.book_name = book_name
-        self.book_name_specs = book_name_specs
-# END CLASS BOOK
 
 # BEGIN CLASS LIBRARY
 class Library:
     def __init__(self, books: Dict[str, Dict[str, int]]):
         self.books = books
 
-    def print_books(self):
-        for book in self.books:
-            print(f"{book}, {self.books[f'{book}']}")
+    def print_books(self, books):
+        for book in books:
+            print(f"{book}, {books[f'{book}']}")
 
     def available_books(self):
         for book_name, book_name_specs in self.books.items():
@@ -45,24 +39,26 @@ class Library:
 
     def remove_book(self, book_name):
         return self.books.pop(book_name, "Book not found.")
-# END CLASS LIBRARY
 
+    @classmethod
+    def load_books(cls, json_data):
+        for name, details in json_data.items():
+            yield name , details
+# END CLASS LIBRARY
 
 # BEGIN MAIN
 if __name__ == "__main__":
-    list_of_books = [
-        Book("Les Misérables", {"author": "Victor Hugo", "year": 1862}),
-        Book("L'Étranger", {"author": "Albert Camus", "year": 1942}),
-        Book("Madame Bovary", {"author": "Gustave Flaubert", "year": 1857}),
-        Book("À la recherche du temps perdu", {"author": "Marcel Proust", "year": 1913}),
-        Book("Le Petit Prince", {"author": "Antoine de Saint-Exupéry", "year": 1943}),
-        Book("Germinal", {"author": "Émile Zola", "year": 1885})
-        ]
+    # Replace file_path variable with the actual json path 
+    # file_path = r"C:\Users\user\Documents\cours_python\cours4-poo\td\livre.json"
+    file_path = r"books.json"
+
+    with open(file_path, 'r') as file:
+        json_data = json.load(file)
     
     # Comprehension Dict
-    books = {book.book_name: book.book_name_specs for book in list_of_books}
+    books = {book_name: book_name_specs for book_name, book_name_specs in Library.load_books(json_data)}
     # Equivalent to:
-    #     books = dict()
+    # books = dict()
     # for book in list_of_books:
     #     books[book.book_name] = book.book_name_specs
 
@@ -79,7 +75,7 @@ if __name__ == "__main__":
     for book in l.available_books():
         print(book)
 
-    target_book = "Les Misérables"
+    target_book = "Stories"
     print_line(f"Searching book : {target_book}")
     print(l.find_book(target_book))
 

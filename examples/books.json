@@ -1,0 +1,127 @@
+
+        {
+            "Great Expectations":
+            {
+                "author": "Charles Dickens",
+                "year": 1861
+            }
+        ,
+    
+        "Jacques the Fatalist":
+            {
+                "author": "Denis Diderot",
+                "year": 1796   
+            }
+    ,
+    
+        "Madame Bovary":
+            {
+                "author": "Gustave Flaubert",
+                "year": 1857
+            }
+    ,
+    
+        "Stories":
+            {
+                "author": "Franz Kafka",
+                "year": 1924
+            }
+    ,
+    
+        "The Trial":
+            {
+                "author": "Franz Kafka",
+                "year": 1925
+            }
+    ,
+    
+        "The Sound of the Mountain":
+            {
+                "author": "Yasunari Kawabata",
+                "year": 1954
+            }
+    ,
+    
+        "Diary of a Madman":
+            {
+                "author": "Lu Xun",
+                "year": 1918
+            }
+    ,
+    
+        "Children of Gebelawi":
+            {
+                "author": "Naguib Mahfouz",
+                "year": 1959
+            }
+    ,
+    
+        "The Magic Mountain":
+            {
+                "author": "Thomas Mann",
+                "year": 1924
+            }
+    ,
+    
+        "Moby Dick":
+            {
+                "author": "Herman Melville",
+                "year": 1851
+            }
+,
+    
+        "Beloved":
+            {
+                "author": "Toni Morrison",
+                "year": 1987
+            } 
+    ,
+    
+        "The Tale of Genji":
+            {
+                "author": "Murasaki Shikibu",
+                "year": 1006
+            }
+    ,
+    
+        "1984":
+            {
+                "author": "George Orwell",
+                "year": 1949
+            }
+    ,
+    
+        "Les Fleurs du mal":
+            {
+                "author": "Charles Baudelaire",
+                "year": 1857
+            }
+    ,
+    
+        "Germinal":
+            {
+                "author": "Émile Zola",
+                "year": 1885
+            }
+    ,
+    
+        "Bilbon, le Hobbit":
+            {
+                "author": "J.R.R Tolkien",
+                "year": 1937
+            }
+    ,
+    
+        "Harry Potter and the philosopher's stone":
+            {
+                "author": "JK Rolling",
+                "year": 1997
+            }
+    ,
+    
+        "Kinder- und Hausmärchen":
+            {
+                "author": "Jacob und Wilhelm Grimm",
+                "year": 1815
+            }
+    }
