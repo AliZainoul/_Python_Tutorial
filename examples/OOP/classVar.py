@@ -62,22 +62,30 @@ cls.class_variable: 999
 After Instantiation:
 cls.class_variable: 999
 object.instance_variable: 20
-cls.class_variable: 999
+self.class_variable: 999
 object.instance_variable: 30
-cls.class_variable: 999
+self.class_variable: 999
+4502575152
+4502575152
+4502575152
 ---------------------------------------------------------------------
 After Modification of class_variable:
 cls.class_variable: 69
 object.instance_variable: 20
-cls.class_variable: 69
+self.class_variable: 69
 object.instance_variable: 30
-cls.class_variable: 69
+self.class_variable: 69
+4513681536
+4513681536
+4513681536
 ---------------------------------------------------------------------
 After Modification of class_variable via obj1:
 cls.class_variable: 69
 object.instance_variable: 20
-cls.class_variable: 69
+self.class_variable: 369
 object.instance_variable: 30
-cls.class_variable: 69
----------------------------------------------------------------------
+self.class_variable: 69
+4513681536
+4502583088
+4513681536
 '''
