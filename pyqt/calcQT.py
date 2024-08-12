@@ -10,61 +10,49 @@ from PyQt6.QtWidgets import (
 
 class CalcInputWindow(QWidget):
     """
-    A simple PyQt5 application window that asks the user to enter their name 
-    and displays it on the screen after submission.
+    A PyQt6 application window that allows the user to enter two numbers
+    and displays the results of various arithmetic operations.
     """
     def __init__(self):
         """
         Constructor to initialize the window and set up the UI components.
         """
         super().__init__()
-
-        # Initialize the UI components
         self.init_ui()
 
     def init_ui(self):
         """
         Set up the user interface components and layout for the window.
         """
-        # Set the window title
-        self.setWindowTitle("Entries Input")
+        self.setWindowTitle("Calculator Input")
 
-        # Create a label to instruct the user
+        # Initialize UI components
         self.label = QLabel("Enter your two numbers:")
-        # Create a text input field for nums entry
         self.number1_input = QLineEdit()
         self.number2_input = QLineEdit()
 
-        # Create a submit button
         self.submit_button = QPushButton("Submit")
-        # Create a label to display the result (i.e., the entered numbers)
-        self.result_label_ADD = QLabel("")
-        self.result_label_SUB = QLabel("")
-        self.result_label_MUL = QLabel("")
-        self.result_label_DIV = QLabel("")
-        self.result_label_EDIV = QLabel("")
-        self.result_label_POW = QLabel("")
-        self.result_label = QLabel("")
+        
+        # Initialize result labels
+        self.result_labels = {
+            'ADD': QLabel(""),
+            'SUB': QLabel(""),
+            'MUL': QLabel(""),
+            'DIV': QLabel(""),
+            'EDIV': QLabel(""),
+            'POW': QLabel(""),
+            'ERROR': QLabel("")
+        }
 
-
-
-        # Set up the layout with a vertical box layout (QVBoxLayout)
+        # Set up layout
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         layout.addWidget(self.number1_input)
         layout.addWidget(self.number2_input)
         layout.addWidget(self.submit_button)
-        layout.addWidget(self.result_label_ADD)
-        layout.addWidget(self.result_label_SUB)
-        layout.addWidget(self.result_label_MUL)
-        layout.addWidget(self.result_label_DIV)
-        layout.addWidget(self.result_label_EDIV)
-        layout.addWidget(self.result_label_POW)
-        layout.addWidget(self.result_label)
+        for label in self.result_labels.values():
+            layout.addWidget(label)
 
-
-
-        # Apply the layout to the window
         self.setLayout(layout)
 
         # Connect the button click event to the display_calculation method
@@ -72,43 +60,83 @@ class CalcInputWindow(QWidget):
 
     def display_calculation(self):
         """
-        Event handler method that retrieves the user's name from the input field 
-        and displays it on the screen.
+        Event handler that retrieves the user's inputs from the input fields,
+        performs various arithmetic calculations, and displays the results.
         """
-        # Get the text entered by the user in the QLineEdit
-        if self.number1_input.text() != '':
-            num1 = float(self.number1_input.text())
-        if self.number2_input.text() != '':
-            num2 = float(self.number2_input.text())
-        if not isinstance(num1, float) and not isinstance(num2, float):
-            # If no name was entered, prompt the user to enter a name
-            self.result_label.setText("Please enter your nums.")
-        # Check if a name was entered
-        self.result_label_ADD.setText(f"Addition : {num1} + {num2} = {num1 + num2}")
-        self.result_label_SUB.setText(f"Substraction: {num1} - {num2} = {num1 - num2}")
-        self.result_label_MUL.setText(f"Product: {num1} * {num2} = {num1 * num2}")
-        self.result_label_DIV.setText(f"Division: {num1} / {num2} = {num1 / num2}")
-        self.result_label_EDIV.setText(f"Entire Division: {num1} // {num2} = {num1 // num2}")
-        self.result_label_POW.setText(f"Power: {num1} ^ {num2} = {num1 ** num2}")
+        # Clear previous error messages
+        self.result_labels['ERROR'].clear()
+
+        try:
+            num1, num2 = self._get_validated_inputs()
+            self._display_results(num1, num2)
+        except ValueError as e:
+            self.result_labels['ERROR'].setText(str(e))
+            self._clear_result_labels()
+
+    def _get_validated_inputs(self):
+        """
+        Validates the inputs from the user. Ensures that both inputs are present
+        and can be converted to floats. Raises a ValueError if the inputs are invalid.
+
+        Returns:
+            tuple: A tuple containing two floats representing the user's input.
         
+        Raises:
+            ValueError: If the input fields are empty or contain non-numeric values.
+        """
+        number1_text = self.number1_input.text()
+        number2_text = self.number2_input.text()
+
+        if not number1_text or not number2_text:
+            raise ValueError("Please enter both numbers.")
         
+        try:
+            num1 = float(number1_text)
+            num2 = float(number2_text)
+        except ValueError:
+            raise ValueError("Please enter valid numbers.")
+        
+        return num1, num2
+
+    def _display_results(self, num1, num2):
+        """
+        Displays the results of various arithmetic calculations on the screen.
+        
+        Args:
+            num1 (float): The first number.
+            num2 (float): The second number.
+        """
+        operations = {
+            'ADD': (num1 + num2, "Addition"),
+            'SUB': (num1 - num2, "Subtraction"),
+            'MUL': (num1 * num2, "Product"),
+            'DIV': (num1 / num2 if num2 != 0 else None, "Division"),
+            'EDIV': (num1 // num2 if num2 != 0 else None, "Entire Division"),
+            'POW': (num1 ** num2, "Power")
+        }
+
+        for key, (result, operation) in operations.items():
+            if result is None:
+                self.result_labels[key].setText(f"{operation}: N/A (division by zero)")
+            else:
+                self.result_labels[key].setText(f"{operation}: {num1} and {num2} = {result}")
+
+    def _clear_result_labels(self):
+        """
+        Clears the text of all result labels except the error label.
+        """
+        for key in self.result_labels:
+            if key != 'ERROR':
+                self.result_labels[key].setText("")
 
 def main():
     """
     The main function that creates and runs the PyQt6 application.
     """
-    # Create the QApplication object, essential for any PyQt application
     app = QApplication(sys.argv)
-
-    # Create an instance of the CalcInputWindow
     window = CalcInputWindow()
-
-    # Show the window on the screen
     window.show()
-
-    # Start the application's event loop and ensure clean exit
     sys.exit(app.exec())
 
-# Check if the script is run directly (not imported as a module)
 if __name__ == "__main__":
     main()
