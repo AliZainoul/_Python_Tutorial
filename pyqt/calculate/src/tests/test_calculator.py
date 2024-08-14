@@ -1,7 +1,7 @@
 # tests/test_calculator.py
 
 import pytest
-from src.calculate import Calculator
+from calculate import Calculator
 
 def test_add():
     calc = Calculator()
