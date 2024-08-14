@@ -1,6 +1,14 @@
 from todolist import TodoList
 # todolist is the folder containing todolist.py
 
+
+# OR:
+# from todolist.todolist import TodoList
+# with __init__ file in todolist with:
+# from .todolist import TodoList
+
+
+
 def test_add():
     todo_list = TodoList()
     todo_list.add("Buy milk")

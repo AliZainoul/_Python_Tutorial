@@ -17,6 +17,12 @@ import qtawesome as qta
 
 from todolist import TodoList
 # todolist is the folder containing todolist.py
+# with __init__ file containing: 
+# from todolist import TodoList
+
+# OR:
+# from todolist.todolist import TodoList
+
 
 class Todo(QWidget):
     check = pyqtSignal(str, bool)
