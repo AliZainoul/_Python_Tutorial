@@ -32,7 +32,6 @@ class Todo(QWidget):
         super().__init__()
         self.__text = text
         self.__checked = checked
-
         self.create_ui()
 
     def create_ui(self):
