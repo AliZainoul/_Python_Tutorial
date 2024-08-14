@@ -1,5 +1,3 @@
-# src/calculate/calculator.py
-
 class Calculator:
     """Class to perform basic arithmetic operations using function pointers."""
 
