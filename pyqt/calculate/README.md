@@ -1,8 +1,8 @@
-# TodoList Project
+# Calculator Project
 
 ## Project Description
 
-This project is a simple Calculator application built using Python. It is structured into different modules for better organization and maintainability. The application includes core functionalities for managing tasks, a graphical user interface (GUI) for interacting with the tasks, and a set of unit tests to ensure the reliability of the code.
+This project is a simple Calculator application built using Python. It is structured into different modules for better organization and maintainability. The application includes core functionalities for performing basic operations, a graphical user interface (GUI) for interacting with different operations, and a set of unit tests to ensure the reliability of the code.
 
 ## Project Structure
 
