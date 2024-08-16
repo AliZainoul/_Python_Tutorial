@@ -1,9 +1,9 @@
-from todolist import TodoList
+# from todolist import TodoList
 # todolist is the folder containing todolist.py
 
 
 # OR:
-# from todolist.todolist import TodoList
+from todolist.todolist import TodoList
 # with __init__ file in todolist with:
 # from .todolist import TodoList
 
