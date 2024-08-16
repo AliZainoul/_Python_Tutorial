@@ -2,7 +2,7 @@
 
 import sys
 from PyQt6.QtWidgets import QApplication
-from ui.calculatorui import CalculatorUI
+from ui.calculator_ui import CalculatorUI
 
 def main():
     """Main function to run the PyQt application."""
