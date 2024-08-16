@@ -1,6 +1,7 @@
 import pytest
-from calculate import Calculator
+# from calculate import Calculator
 # calculate is the folder containing calculator.py
+from calculate.calculator import Calculator
 
 def test_add():
     calc = Calculator()

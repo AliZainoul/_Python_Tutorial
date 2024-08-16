@@ -10,8 +10,10 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QMessageBox
 )
-from calculate import Calculator
+# from calculate import Calculator
 # calculate is the folder containing calculator.py
+from calculate.calculator import Calculator
+
 
 class CalculatorUI(QWidget):
     """

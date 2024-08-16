@@ -29,10 +29,7 @@ The project is organized into various directories:
 - **`calculator.py`**: No imports required
 
 ### UI Directory
-- **`__init__.py`**: Import the Calculator class as follows:
-```python
-  from calculate.calculator import Calculator
-```
+- **`__init__.py`**: Should be present but empty.
 - **`calculator_ui.py`**: Import the Calculator class as follows:
 
 ```python

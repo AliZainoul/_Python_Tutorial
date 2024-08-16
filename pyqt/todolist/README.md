@@ -29,10 +29,7 @@ The project is organized into various directories:
 - **`todolist.py`**: No imports required
 
 ### UI Directory
-- **`__init__.py`**: Import the TodoList class as follows:
-```python
-  from todolist.todolist import TodoList
-```
+- **`__init__.py`**: Should be present but empty.
 - **`todolist_ui.py`**: Import the TodoList class as follows:
 
 ```python
