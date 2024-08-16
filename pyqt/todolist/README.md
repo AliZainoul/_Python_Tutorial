@@ -26,7 +26,7 @@ The project is organized into various directories:
 
 ### TodoList Directory (Under src)
 - **`__init__.py`**: Should be present but empty.
-- **`test_todolist.py`**: No imports required
+- **`todolist.py`**: No imports required
 
 ### UI Directory
 - **`__init__.py`**: Import the TodoList class as follows:
