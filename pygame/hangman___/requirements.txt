@@ -213,7 +213,7 @@ tabulate @ file:///home/conda/feedstock_root/build_artifacts/tabulate_1665138452
 tensorboard @ file:///home/conda/feedstock_root/build_artifacts/tensorboard_1664238338171/work/tensorboard-2.10.1-py3-none-any.whl
 tensorboard-data-server @ file:///D:/bld/tensorboard-data-server_1670043904793/work/tensorboard_data_server-0.6.1-py3-none-any.whl
 tensorboard-plugin-wit @ file:///home/conda/feedstock_root/build_artifacts/tensorboard-plugin-wit_1641458951060/work/tensorboard_plugin_wit-1.8.1-py3-none-any.whl
-tensorflow==2.10.0
+tensorflow==2.12.1
 tensorflow-estimator @ file:///C:/Users/builder/adipietro/mc3/tf210/conda-bld/tensorflow-estimator_1669761460695/work/tensorflow_estimator-2.10.0-py2.py3-none-any.whl
 termcolor @ file:///home/conda/feedstock_root/build_artifacts/termcolor_1704357939450/work
 text-unidecode @ file:///home/conda/feedstock_root/build_artifacts/text-unidecode_1694707102786/work
