@@ -261,5 +261,4 @@ class Contact:
         Destructor method that is called when a contact is being deleted.
         Prints a message indicating which contact is being deleted.
         """
-        print(f"Contact {self.first_name} {self.last_name} is being deleted")
         del(self)
