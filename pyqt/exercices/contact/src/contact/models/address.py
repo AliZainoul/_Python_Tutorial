@@ -219,4 +219,4 @@ class Address:
         str:
             A string that provides a human-readable summary of the address.
         """
-        return f"{self.street}, {self.city}, {self.state} {self.zipcode}, {self.country}"
+        return f"{self.street}, {self.city}, {self.state}, {self.zipcode}, {self.country}"

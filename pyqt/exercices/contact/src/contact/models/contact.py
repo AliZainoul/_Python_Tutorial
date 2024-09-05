@@ -259,6 +259,5 @@ class Contact:
     def __del__(self):
         """
         Destructor method that is called when a contact is being deleted.
-        Prints a message indicating which contact is being deleted.
         """
         del(self)

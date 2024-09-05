@@ -21,30 +21,30 @@ class Persistence(ABC):
         pass
 
 
-class CsvPersistence:
+class CsvPersistence(Persistence):
     """A persistence class that saves and loads data to a CSV file."""
 
     def __init__(self, file_name):
         self.file_name = file_name
 
     def dump(self, data: pd.DataFrame):
-        """Saves the DataFrame to a CSV file."""
-        data.to_csv(self.file_name, index=False)
+        """Saves the DataFrame to a CSV file using a comma separator."""
+        data.to_csv(self.file_name, index=False, sep=',')
     
     def load(self) -> pd.DataFrame:
-        """Loads the data from the CSV file, ensuring the correct data types."""
+        """Loads the data from the CSV file, using a comma separator and ensuring the correct data types."""
         if not os.path.exists(self.file_name):
             # Return an empty DataFrame if the file does not exist
             return pd.DataFrame()
+        
         dtype = {
-            "Contact ID": int,
             "First Name": str,
             "Last Name": str,
             "Phone Number": str,
             "Email": str,
-            "Address ID": int
+            "Address": str
         }
-        return pd.read_csv(self.file_name, dtype=dtype)
+        return pd.read_csv(self.file_name, dtype=dtype, sep=',')
     
     def is_file_exists(self) -> bool:
         """Checks if the CSV file exists."""
@@ -55,40 +55,17 @@ class CsvPersistenceMock(Persistence):
     """A mock persistence class used for testing."""
 
     def __init__(self):
-        """
-        Initialize the CsvPersistenceMock with an empty DataFrame.
-        """
+        """Initialize the CsvPersistenceMock with an empty DataFrame."""
         self.data = pd.DataFrame()
 
     def dump(self, data: pd.DataFrame):
-        """
-        Mock saving data. Stores data in memory instead of a file.
-
-        Parameters:
-        ----------
-        data : pd.DataFrame
-            The data to be "saved" in memory.
-        """
+        """Mock saving data. Stores data in memory instead of a file."""
         self.data = data
 
     def load(self) -> pd.DataFrame:
-        """
-        Mock loading data. Retrieves data from memory instead of a file.
-
-        Returns:
-        -------
-        pd.DataFrame:
-            The data stored in memory.
-        """
+        """Mock loading data. Retrieves data from memory instead of a file."""
         return self.data
 
     def is_file_exists(self) -> bool:
-        """
-        Mock file existence check. Always returns True.
-
-        Returns:
-        -------
-        bool:
-            True, as the file is assumed to always exist in this mock.
-        """
+        """Mock file existence check. Always returns True."""
         return True

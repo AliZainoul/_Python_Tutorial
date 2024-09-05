@@ -78,7 +78,7 @@ def test_render_contact(sample_contact):
         "Name: John Doe\n"
         "Phone: 1234567890\n"
         "Email: john@example.com\n"
-        "1234 Python Lane, Pythontown, PY 12345, Pythonland"
+        "1234 Python Lane, Pythontown, PY, 12345, Pythonland"
     )
     assert str(sample_contact) == expected_output
 
