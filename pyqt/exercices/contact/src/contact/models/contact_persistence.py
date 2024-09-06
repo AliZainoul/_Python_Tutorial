@@ -33,7 +33,7 @@ class CsvPersistence(Persistence):
     
     def load(self) -> pd.DataFrame:
         """Loads the data from the CSV file, using a comma separator and ensuring the correct data types."""
-        if not os.path.exists(self.file_name):
+        if not self.is_file_exists():
             # Return an empty DataFrame if the file does not exist
             return pd.DataFrame()
         

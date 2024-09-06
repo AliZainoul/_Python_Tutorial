@@ -1,8 +1,8 @@
 from typing import List
 import pandas as pd
 from faker import Faker
-from contact.models.contact import Contact
 from contact.models.address import Address
+from contact.models.contact import Contact
 from contact.models.contact_persistence import CsvPersistence
 
 class ContactManager:
@@ -48,6 +48,8 @@ class ContactManager:
                 setattr(contact, key, value)
             self.save_contacts()
 
+
+    # TO MODIFY BECAUSE OF THE COMPLEXITY OF THE METHOD ! O(N)
     def delete_contact(self, contact_email: str) -> None:
         """
         Delete a contact from the contact list and save the changes to the CSV file.
@@ -66,8 +68,6 @@ class ContactManager:
             List[Contact]: The list of all contacts.
         """
         return self.contacts
-
-# contact_manager.py (or wherever ContactManager is defined)
 
     def search_contact(self, search_term: str) -> list[Contact]:
         """
