@@ -5,7 +5,7 @@ pytest
 
 # To compile:
 ```
-python x y
+python src/main.py
 ```
 
 # To clean up:
