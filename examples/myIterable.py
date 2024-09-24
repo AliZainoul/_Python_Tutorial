@@ -15,8 +15,8 @@ class MyIterable:
         
 
 # Using the iterable
-my_iterable = MyIterable(5)
-# next(my_iterable)
+my_iterable = MyIterable(10)
+# print(next(my_iterable))
 # my_iterable.__next__()
 for element in my_iterable:
     print(element)
