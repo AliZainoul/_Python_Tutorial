@@ -2,7 +2,7 @@ def print_line():
     print("---"*16)
 
 def create_person(**kwargs):
-    person = {}
+    person = dict()
     for key, value in kwargs.items():
         person[key] = value 
     return person
