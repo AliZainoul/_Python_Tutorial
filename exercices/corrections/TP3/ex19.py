@@ -1,4 +1,3 @@
-import re
 from typing import List, Tuple, Dict
 
 def filter_element(word: str) -> str:
@@ -7,7 +6,6 @@ def filter_element(word: str) -> str:
     
     Args:
         word (str): The word to be filtered.
-        
     Returns:
         str: The filtered word with specified characters removed.
     """
@@ -17,6 +15,8 @@ def filter_element(word: str) -> str:
     filtered_word = word.strip(reg)
     # TODO: replace with a good RegEx pattern!
     return filtered_word
+
+    # TODO: filter_a_single_string function !
 
 def input_sentences() -> List[Tuple[str, ...]]:
     """
