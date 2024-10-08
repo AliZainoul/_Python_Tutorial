@@ -135,8 +135,6 @@ def _find_book(library: dict, prompt: str):
     dict or str: The book details if found, otherwise "Not found".
     """
 
-    # TODO nested comprehension lists
-
     # l = []
     # for book_name, book_specs in library.items():
     #     if prompt in book_name:
@@ -149,6 +147,7 @@ def _find_book(library: dict, prompt: str):
     # return l
 
     return [(book_name, book_specs) for (book_name, book_specs) in library.items() if prompt in book_name]
+# TODO nested comprehension lists
 
 def is_present(library: dict, book_name: str) -> bool:
     """
