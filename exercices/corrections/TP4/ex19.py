@@ -134,9 +134,7 @@ def _find_book(library: dict, prompt: str) -> list:
     Returns:
     list of books (list): All books if prompt found in book details, otherwise an empty list.
     """
-
-    # TODO nested comprehension lists
-
+    
     # l = []
     # for book_name, book_specs in library.items():
     #     if prompt in book_name:
