@@ -106,7 +106,7 @@ def add_book(library: dict, book_name: str) -> None:
     else:
         book_specs = dict()
         book_specs['author'] = input(f"Please enter the author of the book {book_name}: ")
-        book_specs['year'] = input(f"Please enter the year of the book {book_name}: ")
+        book_specs['year'] = int(input(f"Please enter the year of the book {book_name}: "))
         library[book_name] = book_specs
         print(f"{book_name} was successfully added to library: {library[book_name]}")
 
@@ -123,7 +123,7 @@ def find_book(library: dict, book_name: str):
     """
     return library.get(book_name, "Not found")
 
-def _find_book(library: dict, prompt: str):
+def _find_book(library: dict, prompt: str) -> list:
     """
     Finds a book in the library by its name.
     
@@ -132,22 +132,38 @@ def _find_book(library: dict, prompt: str):
     book_name (str): The name of the book to find.
     
     Returns:
-    dict or str: The book details if found, otherwise "Not found".
+    list of books (list): All books if prompt found in book details, otherwise an empty list.
     """
+
+    # TODO nested comprehension lists
 
     # l = []
     # for book_name, book_specs in library.items():
     #     if prompt in book_name:
     #         l.append((book_name, book_specs))
         
-    #     for author, year in book_specs.items():
-    #         if prompt in author or prompt in book_name:
-    #             l.append((book_name, book_specs))
+    #     book_details = list(book_specs.values())
+    #     for el in book_details:
+    #         if(isinstance(el, int)):
+    #             if prompt in str(el):
+    #                 l.append((book_name, book_specs))
+    #         if(isinstance(el, str)):        
+    #             if prompt in el:
+    #                 l.append((book_name, book_specs))
 
     # return l
 
-    return [(book_name, book_specs) for (book_name, book_specs) in library.items() if prompt in book_name]
-# TODO nested comprehension lists
+
+    # Return a list of tuples (book_name, book_specs) for books where prompt is found in book_name or any value of book_specs
+    return [
+        (book_name, book_specs)
+        for book_name, book_specs in library.items()
+        if prompt in book_name
+        or any(
+            (prompt in str(el) if isinstance(el, int) else prompt in el)
+            for el in list(book_specs.values())
+        )
+    ]
 
 def is_present(library: dict, book_name: str) -> bool:
     """
@@ -194,12 +210,17 @@ if __name__ == "__main__":
     print_line(f"Searching book: {target_book}")
     print(find_book(books, target_book))
 
-    target_book = "É"
+    target_book = "Hugo"
     print_line(f"Searching book: {target_book}")
     print_line(f"with function FIND_BOOK uses get method of DICT")
     print(find_book(books, target_book))
 
-    target_book = "É"
+    target_book = "Hugo"
+    print_line(f"Searching book: {target_book}")
+    print_line(f"with function _FIND_BOOK uses IN operator with prompt")
+    print(_find_book(books, target_book))
+
+    target_book = "2"
     print_line(f"Searching book: {target_book}")
     print_line(f"with function _FIND_BOOK uses IN operator with prompt")
     print(_find_book(books, target_book))
