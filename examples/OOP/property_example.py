@@ -22,6 +22,7 @@ p = Person("Ali")
 # throws : AttributeError: 'Person' object has no attribute '__name'. Did you mean: 'name'?
 
 # p.__name = "Alexandre" 
+# * DOES NOT MODIFY THE PRIVATE MEMBER __name, HOWEVER IT DOES NOT THROW AN EXCEPTION ! 
 # Do not throw an exception at runtime ?! WHY ??
 
 print(f"With getter method get_name : {p.get_name()}")
