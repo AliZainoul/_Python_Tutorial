@@ -67,5 +67,9 @@ print(f"Ratio of elapsed_time_2 / elapsed_time_1 = {elapsed_time_2/elapsed_time_
 
 '''
     If ratio <= 1 then abstraction is OK!
-    otherwise usage of abstraction for overriding methods is useless !
+    otherwise usage of abstraction for overriding methods may seem useless,
+    however the pros of using abstraction and overriding are:
+    - Extensible systems bringing consistence
+    - Designing APIs in order to expose a clean interface with flexibility
+    - Improving readability and maintainability 
 '''

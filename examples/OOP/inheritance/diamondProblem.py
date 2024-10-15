@@ -107,7 +107,7 @@ It's normal behavior that the MRO returns the same results for mro method
 In the original Diamond Problem example, explicit calls to the 
     base class methods (A.my_method(self)) lead to the method of class A 
     being called twice. This occurs because the method resolution follows 
-    the inheritance hierarchy specified in the class definitions (D(B, C)), 
+    the inheritance hierarchy specified in the class definitions (D(C, B)), 
     resulting in my_method of class A being invoked multiple times along 
     the inheritance path.
 
