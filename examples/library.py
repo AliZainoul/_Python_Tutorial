@@ -134,34 +134,23 @@ def _find_book(library: dict, prompt: str) -> list:
     Returns:
     list of books (list): All books if prompt found in book details, otherwise an empty list.
     """
-    
-    # l = []
-    # for book_name, book_specs in library.items():
-    #     if prompt in book_name:
-    #         l.append((book_name, book_specs))
+
+    # TODO nested comprehension lists
+
+    l = []
+    for book_name, book_specs in library.items():
+        if prompt in book_name:
+            l.append((book_name, book_specs))
         
-    #     book_details = list(book_specs.values())
-    #     for el in book_details:
-    #         if(isinstance(el, int)):
-    #             if prompt in str(el):
-    #                 l.append((book_name, book_specs))
-    #         if(isinstance(el, str)):        
-    #             if prompt in el:
-    #                 l.append((book_name, book_specs))
+        for author, year in book_specs.items():
+            print(author)
+            print(year)
+            if prompt in author or prompt in book_name:
+                l.append((book_name, book_specs))
 
-    # return l
+    return l
 
-
-    # Return a list of tuples (book_name, book_specs) for books where prompt is found in book_name or any value of book_specs
-    return [
-        (book_name, book_specs)
-        for book_name, book_specs in library.items()
-        if prompt in book_name
-        or any(
-            (prompt in str(el) if isinstance(el, int) else prompt in el)
-            for el in list(book_specs.values())
-        )
-    ]
+    # return [(book_name, book_specs) for (book_name, book_specs) in library.items() if prompt in book_name]
 
 def is_present(library: dict, book_name: str) -> bool:
     """
@@ -214,11 +203,6 @@ if __name__ == "__main__":
     print(find_book(books, target_book))
 
     target_book = "Hugo"
-    print_line(f"Searching book: {target_book}")
-    print_line(f"with function _FIND_BOOK uses IN operator with prompt")
-    print(_find_book(books, target_book))
-
-    target_book = "2"
     print_line(f"Searching book: {target_book}")
     print_line(f"with function _FIND_BOOK uses IN operator with prompt")
     print(_find_book(books, target_book))
