@@ -1,11 +1,18 @@
-import sys
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel
 
-app = QApplication(sys.argv)
+app = QApplication([])
 
 window = QWidget()
-window.setWindowTitle('Hello, PyQt!')
+window.setWindowTitle('My Title : Hello, PyQt!')
+
+my_label = QLabel("Hello World! ")
+my_layout = QHBoxLayout()
+my_layout.addWidget(my_label)
+
 window.setGeometry(100, 100, 280, 80)
+window.setLayout(my_layout)
 window.show()
 
-sys.exit(app.exec())
+app.exec()
+
+app.quit()
