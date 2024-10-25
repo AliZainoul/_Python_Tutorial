@@ -1,5 +1,3 @@
-import sys
-
 from todolist.managers.todolist_manager import TodoListManager
 from todolist.persistence.csv_persistence import CsvPersistence
 
@@ -60,9 +58,8 @@ class TodoListViewCLI():
                     break
                 case _:
                     print("Invalid option. Please choose again.")
+                    
             self.display_todo_list(self.manager.todo_list.tasks)
-
-
 
 def main():
     FILE_NAME = "data/tasks.csv"
@@ -75,6 +72,5 @@ def main():
     view = TodoListViewCLI(manager)
     view.show()
   
-
 if __name__ == "__main__":
     main()
