@@ -1,7 +1,6 @@
 import pytest
 from todolist.models.task import Task
 
-'''
 def test_task_default_values():
     task = Task()
     assert task.name == ""
@@ -94,3 +93,4 @@ def test_task_set_is_done_invalid(task):
 
 def test_task_str_representation(task):
     assert str(task) == "Task name: Write code and its status is False.\n"
+'''
