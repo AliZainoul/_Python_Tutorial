@@ -1,4 +1,4 @@
-import copy
+import copy # Importing the copy module for deep copying (function deepcopy)
 
 # Creating an original list
 l1 = [1, 2, 3]
