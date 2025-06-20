@@ -13,6 +13,6 @@ from packageA.test_class import TestClass
 # Test the access
 obj = TestClass()
 try:
-    print("Accessing in packageB:", obj._TestClass__private_method(), obj._TestClass__private_attr)
+    print("Accessing in packageB:", obj._protected_method(), obj._protected_attr)
 except AttributeError as e:
     print("Failed to access in packageB:", e)

@@ -18,8 +18,7 @@ class MathOperations:
         return a + b
 
     
-print(MathOperations.add(2, 3))  # Output: 5
-print(MathOperations.add(2.2, 3.3))  # Output: 5.5
-print(MathOperations.add( "Hello ", str(input("Enter your name: "))))  # Output: Hello <Name>
-print(MathOperations.add([1,2,3] , [4,5,6]))  # Output: Hello [1,2,3,4,5,6]
-
+print(MathOperations.add(2, 3))                                         # Output: 5
+print(MathOperations.add(2.2, 3.3))                                     # Output: 5.5
+print(MathOperations.add( "Hello ", str(input("Enter your name: "))))   # Output: Hello <Name>
+print(MathOperations.add([1,2,3] , [4,5,6]))                            # Output: [1,2,3,4,5,6]

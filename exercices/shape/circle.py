@@ -6,7 +6,7 @@ class Circle():
         self.r = r
 
     def area(self) -> float:
-        return 2 * cmath.pi * self.r
+        return cmath.pi * self.r ** 2
     
     def __repr__(self) -> str:
         return f"(id = {id(self)}, radius = {self.r}, area = {self.area()})"
