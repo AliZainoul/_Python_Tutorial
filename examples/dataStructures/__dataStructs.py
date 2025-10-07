@@ -12,13 +12,15 @@ def is_mutable(obj):
     }
     return dict_mutable[type(obj).__name__]
 
-def printStructInfos(struct):
-    print("Assignable:",    hasattr(struct, '__setitem__'))     
-    print("Subscriptable:", hasattr(struct, '__getitem__'))  
-    print("Ordered:",       hasattr(struct, '__getitem__'))        
-    print("Mutable:",       is_mutable(struct))                    
-    print("Hashable:",      not is_mutable(struct))               
-    print("Copiable:",      hasattr(struct, 'copy'))              
+def printStructInfos(containter):
+    # print("Assignable                 :",    hasattr(containter, '__setitem__'))
+    print("Assignable                   :",    '__setitem__' in dir(containter))
+    # print("Subscriptable or Ordered   :", hasattr(containter, '__getitem__'))  
+    print(f"Subscriptable or Ordered    :    {'__getitem__' in dir(containter)}")
+    print(f"Mutable                     :       {is_mutable(containter)}")                    
+    print(f"Hashable                    :      {not is_mutable(containter)}")               
+    print(f"Copiable                    :      {'copy' in dir(containter)}")              
+    # print(f"Copiable                  :      {hasattr(containter, 'copy')}")              
 
 printLine("# Example of a string")
 my_string = "hello"

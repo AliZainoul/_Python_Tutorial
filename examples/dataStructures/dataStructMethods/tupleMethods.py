@@ -12,7 +12,7 @@ print("Index of '3' in the tuple:", my_tuple.index(3))
 print("Count of '2' in the tuple:", my_tuple.count(2))
 
 # print("__dir__ method:", dir(my_tuple))
-# print("__doc__ method:", my_tuple.__doc__)
+# print("__doc__ attribute:", my_tuple.__doc__)
 
 # __add__(): Returns a new tuple by concatenating the original tuple and the added tuple
 print("__add__ method:", my_tuple.__add__((6, 7)))  # return a new tuple
