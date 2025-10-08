@@ -2,23 +2,24 @@ def print_separator():
     print("-" * 69)
 
 class MyClass:
+    # Class Variable
     class_variable = 999
     
-    def __init__(self, instance_variable):
-        self.instance_variable = instance_variable
+    # Constructor
+    def __init__(self, value: int):
+        self.instance_variable = value
 
-    @classmethod
-    def print_class_variable(cls):
-        print("cls.class_variable:", cls.class_variable)
+    # Regular Methods
+    def print_instance_variable(self):
+        print("object.instance_variable:", self.instance_variable)
 
     def print_class_variable_of_obj(self):
         print("self.class_variable:", self.class_variable)
 
-    def print_instance_variable(self):
-        print("object.instance_variable:", self.instance_variable)
 
+    # Static Methods
     @staticmethod
-    def print_all_info(obj1, obj2):
+    def print_all_info(obj1: 'MyClass', obj2: 'MyClass'):
         MyClass.print_class_variable()      
         obj1.print_instance_variable()      
         obj1.print_class_variable_of_obj()         
@@ -29,28 +30,38 @@ class MyClass:
         print(id(obj2.class_variable))  
         print_separator()
 
+    # Class Methods
+    @classmethod
+    def print_class_variable(cls):
+        print("cls.class_variable:", cls.class_variable)
 
-print_separator()
 
-# Instantiation and usage
-print("Before Instantiation:")
-MyClass.print_class_variable()
-print_separator()
 
-obj1 = MyClass(20)
-obj2 = MyClass(30)
-print("After Instantiation:")
-MyClass.print_all_info(obj1, obj2)
+def main():
+    print_separator()
 
-# Modifying the class variable
-MyClass.class_variable = 69
-print("After Modification of class_variable:")
-MyClass.print_all_info(obj1, obj2)
+    # Instantiation and usage
+    print("Before Instantiation:")
+    MyClass.print_class_variable()
+    print_separator()
 
-# Modifying the class variable from instances
-obj1.class_variable = 369
-print("After Modification of class_variable via obj1:")
-MyClass.print_all_info(obj1, obj2)
+    obj1 = MyClass(20)
+    obj2 = MyClass(30)
+    print("After Instantiation:")
+    MyClass.print_all_info(obj1, obj2)
+
+    # Modifying the class variable
+    MyClass.class_variable = 69
+    print("After Modification of class_variable:")
+    MyClass.print_all_info(obj1, obj2)
+
+    # Modifying the class variable from instances
+    obj1.class_variable = 369
+    print("After Modification of class_variable via obj1:")
+    MyClass.print_all_info(obj1, obj2)
+
+if __name__ == "__main__":
+    main()
 
 
 '''
