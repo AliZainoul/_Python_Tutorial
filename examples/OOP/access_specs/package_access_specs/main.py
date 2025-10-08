@@ -43,7 +43,6 @@ print(o._MyClass__private_display_infos())
 
 
 
-
 # from access_specs import myClass
 
 # o = myClass()
