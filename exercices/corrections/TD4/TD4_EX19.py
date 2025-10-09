@@ -157,10 +157,7 @@ def _find_book(library: dict, prompt: str) -> list:
         (book_name, book_specs)
         for book_name, book_specs in library.items()
         if prompt in book_name
-        or any(
-            (prompt in str(el) if isinstance(el, int) else prompt in el)
-            for el in list(book_specs.values())
-        )
+        or any(prompt in str(el) for el in list(book_specs.values()))
     ]
 
 def is_present(library: dict, book_name: str) -> bool:
@@ -219,6 +216,11 @@ if __name__ == "__main__":
     print(_find_book(books, target_book))
 
     target_book = "2"
+    print_line(f"Searching book: {target_book}")
+    print_line(f"with function _FIND_BOOK uses IN operator with prompt")
+    print(_find_book(books, target_book))
+
+    target_book = input("Please enter your targeted book (as author, year or book name) : ")
     print_line(f"Searching book: {target_book}")
     print_line(f"with function _FIND_BOOK uses IN operator with prompt")
     print(_find_book(books, target_book))
