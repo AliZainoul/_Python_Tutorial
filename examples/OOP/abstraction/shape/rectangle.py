@@ -1,12 +1,15 @@
 from shape import Shape
 
-class Rectangle():
+class Rectangle(Shape):
     def __init__(self, l: float, w: float):
-        self.l = l
-        self.w = w
+        self.length = l
+        self.width = w
 
     def area(self) -> float:
-        return self.l * self.w
+        return self.length * self.width
+    
+    def perimeter(self) -> float:
+        return 2 * (self.length + self.width)
 
     def __repr__(self) -> str:
-        return f"(id = {id(self)}, (l,w) = {(self.l, self.w)}, area = {self.area()})"
+        return f"({id(self) = }, {self.length = }, {self.width = }, {self.area() = }, {self.perimeter() = })"
