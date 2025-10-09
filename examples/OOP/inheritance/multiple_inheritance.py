@@ -1,4 +1,5 @@
 '''
+
 class A:
     """Class A demonstrates a simple class with one member variable.
 
@@ -51,6 +52,7 @@ class C(B, A):
         """
         A.__init__(self, x)
         B.__init__(self, y)
+        
 
 
 def main():
@@ -73,8 +75,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 '''
 
+'''
 class A:
     """Base class A demonstrating cooperative multiple inheritance.
 
@@ -155,3 +159,83 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
+
+class A:
+    """Base class A demonstrating cooperative multiple inheritance.
+
+    This class defines a member variable `member_a`.
+
+    By using `*args`, it can accept and forward additional arguments
+    without breaking the constructor chain.
+    """
+
+    def __init__(self, *args):
+        """Initialize class A.
+
+        Args:
+            **kwargs: Arbitrary keyword arguments that may include `a_value`.
+                - `a_value` (optional): Value to assign to `member_a`.
+        """
+        self.member_a = args[1]
+
+class B:
+    """Base class B demonstrating cooperative multiple inheritance.
+
+    Like class A, it uses `super()` to call the next constructor in the
+    Method Resolution Order (MRO), ensuring consistent initialization across all bases.
+    """
+
+    def __init__(self, *args):
+        """Initialize class B.
+
+        Args:
+            *args: Arbitrary keyword arguments that may include `b_value`.
+                - `b_value` (optional): Value to assign to `member_b`.
+        """
+        self.member_b = args[0]
+        super().__init__(*args)
+
+
+class C(B, A):
+    """Class C inheriting from both B and A using cooperative multiple inheritance.
+
+    This class does not need to manually call each parent constructor.
+    Instead, `super()` ensures that both A and B are initialized in the correct order
+    according to the Method Resolution Order (MRO).
+
+    Note:
+        This design pattern ensures clean, extensible, and predictable initialization.
+    """
+
+    def __init__(self, *args):
+        """Initialize class C.
+
+        Args:
+            *args: Arbitrary keyword arguments forwarded to parent constructors.
+        """
+        super().__init__(*args)
+
+
+def main():
+    """Demonstrate cooperative multiple inheritance with `super()` and `*args`.
+
+    This function creates an instance of `C` by passing values for both A and B.
+    The initialization chain automatically handles argument dispatching
+    through `*args`.
+
+    Example:
+        >>> c = C(1, 2)
+        >>> print(c.member_a)
+        1
+        >>> print(c.member_b)
+        2
+    """
+    c = C(2, 1)
+    print(f"{c.member_a = }")
+    print(f"{c.member_b = }")
+
+
+if __name__ == "__main__":
+    main()
+
