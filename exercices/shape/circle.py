@@ -1,14 +1,16 @@
-import cmath
+import math
 from shape import Shape
 
-class Circle():
+class Circle(Shape):
     def __init__(self, r: float):
-        self.r = r
+        self.radius = r
 
     def area(self) -> float:
-        return cmath.pi * self.r ** 2
+        return math.pi * self.radius ** 2
+
+    def perimeter(self) -> float:
+        return 2 * math.pi * self.radius
     
     def __repr__(self) -> str:
-        return f"(id = {id(self)}, radius = {self.r}, area = {self.area()})"
-
-    
+        return f"({id(self) = }, {self.radius = }, {self.area() = }, {self.perimeter() = })"
+        

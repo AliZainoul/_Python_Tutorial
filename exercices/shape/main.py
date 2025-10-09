@@ -1,12 +1,20 @@
 # main.py
 
+from math import pi
+from shape import Shape
 from circle import Circle
+from square import Square
+from triangle import Triangle
 from rectangle import Rectangle
 
 
 r = Rectangle(36.7, 32.5)
-c = Circle(44)
+s = Square(4)
+c = Circle(pi)
+t = Triangle(3,4,5)
 
-l = [f"{repr(obj)}" for obj in [r,c]]
+list_of_shapes : list[Shape, Shape, Shape, Shape] = [r, s, c, t]
 
-print(l)
+
+for shape in list_of_shapes:
+    print(f"{repr(shape)}")
