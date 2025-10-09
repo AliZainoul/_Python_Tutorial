@@ -70,6 +70,7 @@ def main():
     c.show_a()
     c.show_b()
     c.show_c()
+    print(C.__mro__)
 
 
 if __name__ == "__main__":

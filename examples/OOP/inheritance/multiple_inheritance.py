@@ -239,3 +239,38 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+
+# Example: 
+'''
+>>> class Flyable:
+...     def __init__(self, speed):
+...         self.speed_f = speed
+...     def can_fly(self):
+...         return True
+...
+>>> class Swim:
+...     def __init__(self, speed):
+...         self.speed_s = speed
+...     def can_swim(self):
+...         return True
+...
+>>> class Duck(Flyable, Swim):
+...     def __init__(self, name, s1, s2):
+...         self.name = name
+...         Flyable.__init__(self,s1)
+...         Swim.__init__(self,s2)
+...
+>>> d = Duck("Duffy",50, 5)
+>>> d.name
+'Duffy'
+>>> d.speed_f
+50
+>>> d.speed_s
+5
+>>> d.can_fly()
+True
+>>> d.can_swim()
+True
+>>>
+'''
