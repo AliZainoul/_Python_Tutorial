@@ -6,7 +6,7 @@ import sys
 # You need one (and only one) QApplication instance per application.
 # Pass in sys.argv to allow command line arguments for your app.
 # If you know you won't use command line arguments QApplication([]) works too.
-app = QApplication()
+app = QApplication([])
 
 # Create a Qt widget, which will be our window.
 window = QWidget()
