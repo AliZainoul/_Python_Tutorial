@@ -1,10 +1,10 @@
 import time
 
 
-def printText(s):
+def print_text(s : str):
     print("\n" + "--"*16 + s + "--"*16 + "\n")
 
-printText("Without Abstraction")
+print_text("Without Abstraction")
 # Start Timer
 start_time_1 = time.perf_counter()
 
@@ -33,7 +33,7 @@ print(f"Elapsed time : {elapsed_time_1}.")
 
 
 
-printText("With Abstraction")
+print_text("With Abstraction")
 from abc import ABC, abstractmethod
 
 # Start Timer

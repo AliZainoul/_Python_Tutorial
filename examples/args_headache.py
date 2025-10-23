@@ -24,7 +24,7 @@ BLUE = "\033[94m"
 
 
 # ============================================================
-# 1️⃣ Definition 1 — Single parameter, no unpacking in print
+# Definition 1 — Single parameter, no unpacking in print
 # ============================================================
 def print_infos_case1(args):
     """
@@ -44,7 +44,7 @@ def print_infos_case1(args):
 
 
 # ============================================================
-# 2️⃣ Definition 2 — *args in definition, *args in print
+# Definition 2 — *args in definition, *args in print
 # ============================================================
 def print_infos_case2(*args):
     """
@@ -64,7 +64,7 @@ def print_infos_case2(*args):
 
 
 # ============================================================
-# 3️⃣ Definition 3 — Single parameter, unpacked in print
+# Definition 3 — Single parameter, unpacked in print
 # ============================================================
 def print_infos_case3(args):
     """
@@ -84,7 +84,7 @@ def print_infos_case3(args):
 
 
 # ============================================================
-# 4️⃣ Definition 4 — *args in definition, printed as tuple
+# Definition 4 — *args in definition, printed as tuple
 # ============================================================
 def print_infos_case4(*args):
     """
@@ -104,7 +104,7 @@ def print_infos_case4(*args):
 
 
 # ============================================================
-# 🧪 TESTS — same dataset for all functions
+# TESTS — same dataset for all functions
 # ============================================================
 if __name__ == "__main__":
     # --------------------------------------------------------
@@ -139,9 +139,9 @@ if __name__ == "__main__":
     ]
 
     # ============================================================
-    # CASE 1️⃣ — def print_infos(args): print(args)
+    # CASE 1 — def print_infos(args): print(args)
     # ============================================================
-    print(f"\n{BOLD}{CYAN}=== Case 1️⃣ — Single parameter, no unpacking in print ==={RESET}")
+    print(f"\n{BOLD}{CYAN}=== Case 1 — Single parameter, no unpacking in print ==={RESET}")
     for el in elements:
         try:
             print(f"{BLUE}Input:{RESET} {repr(el)} → {BLUE}Output:{RESET} ", end="")
@@ -150,9 +150,9 @@ if __name__ == "__main__":
             print(f"{RED}Error: {e}{RESET}")
 
     # ============================================================
-    # CASE 2️⃣ — def print_infos(*args): print(*args)
+    # CASE 2 — def print_infos(*args): print(*args)
     # ============================================================
-    print(f"\n{BOLD}{GREEN}=== Case 2️⃣ — *args in definition, *args in print ==={RESET}")
+    print(f"\n{BOLD}{GREEN}=== Case 2 — *args in definition, *args in print ==={RESET}")
     for el in elements:
         try:
             print(f"{BLUE}Input:{RESET} {repr(el)} → {BLUE}Output:{RESET} ", end="")
@@ -161,9 +161,9 @@ if __name__ == "__main__":
             print(f"{RED}Error: {e}{RESET}")
 
     # ============================================================
-    # CASE 3️⃣ — def print_infos(args): print(*args)
+    # CASE 3 — def print_infos(args): print(*args)
     # ============================================================
-    print(f"\n{BOLD}{BLUE}=== Case 3️⃣ — Single parameter, unpacked in print ==={RESET}")
+    print(f"\n{BOLD}{BLUE}=== Case 3 — Single parameter, unpacked in print ==={RESET}")
     for el in elements:
         try:
             print(f"{BLUE}Input:{RESET} {repr(el)} → {BLUE}Output:{RESET} ", end="")
@@ -172,9 +172,9 @@ if __name__ == "__main__":
             print(f"{RED}Error: {e}{RESET}")
 
     # ============================================================
-    # CASE 4️⃣ — def print_infos(*args): print(args)
+    # CASE 4 — def print_infos(*args): print(args)
     # ============================================================
-    print(f"\n{BOLD}{MAGENTA}=== Case 4️⃣ — *args in definition, printed as tuple ==={RESET}")
+    print(f"\n{BOLD}{MAGENTA}=== Case 4 — *args in definition, printed as tuple ==={RESET}")
     for el in elements:
         try:
             print(f"{BLUE}Input:{RESET} {repr(el)} → {BLUE}Output:{RESET} ", end="")
@@ -183,6 +183,6 @@ if __name__ == "__main__":
             print(f"{RED}Error: {e}{RESET}")
 
     # ============================================================
-    # 🏁 END
+    # END
     # ============================================================
-    print(f"\n{BOLD}{GREEN}✅ Comparison complete! Explore the patterns above to master *args behavior.{RESET}\n")
+    print(f"\n{BOLD}{GREEN} Comparison complete! Explore the patterns above to master *args behavior.{RESET}\n")

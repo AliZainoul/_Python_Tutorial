@@ -1,8 +1,9 @@
 # Example of basic arithmetic operations in Python
 
 # Definition of two variables x and y
-x = 7
-y = 3
+x : int = 7
+y : int = 3
+
 result_addition = x + y
 print(f"Addition: {x} + {y} = {result_addition}")  
 # Displays: Addition: 7 + 3 = 10
