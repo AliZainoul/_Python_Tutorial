@@ -1,47 +1,95 @@
-# ANSI color codes
-RESET = "\033[0m"
-COLORS = {
-    0: "\033[35m",  # Dark Magenta - global
-    1: "\033[34m",  # Dark Blue - function
-    2: "\033[32m",  # Dark Green - if-block
-    3: "\033[33m",  # Dark Yellow - else-block
-    4: "\033[31m",  # Dark Red - nested if
+"""
+Illustrates the notion of logical scopes in Python using ANSI colors.
+Each indentation level represents a conceptual scope depth.
+"""
+
+from typing import Optional, Any
+
+# ==========================================================
+# === ANSI color configuration =============================
+# ==========================================================
+RESET: str = "\033[0m"  # Reset color (return to default terminal color)
+
+COLORS: dict[str, str] = {
+    "MAGENTA": "\033[35m",   # Global (Scope 0)
+    "BLUE": "\033[34m",      # Function (Scope 1)
+    "GREEN": "\033[32m",     # If-block (Scope 2)
+    "YELLOW": "\033[33m",    # Else-block (Scope 3)
+    "RED": "\033[31m",       # Nested if (Scope 4)
 }
 
-# Global scope (Scope 0)
-GLOBAL_VAR = "I am global"
-print(f"{COLORS[0]}[Scope 0] GLOBAL_VAR: {GLOBAL_VAR}{RESET}")
+TAB_SIZE = 4  # number of spaces per scope level
 
-def my_square(x: float) -> float:
-    """
-    Illustrates nested scopes while computing the square of a float.
-    """
-    # Function scope (Scope 1)
-    FUNCTION_VAR = "I exist inside my_square"
-    print(f"{COLORS[1]}[Scope 1] FUNCTION_VAR: {FUNCTION_VAR}{RESET}")
-    print(f"{COLORS[1]}[Scope 1] GLOBAL_VAR: {GLOBAL_VAR}{RESET}")
+# ==========================================================
+# === Utility for scope printing ===========================
+# ==========================================================
+def print_scope(scope: int, color: str, message: str) -> None:
+    """Print a message with indentation and color based on scope depth."""
+    indent = " " * (scope * TAB_SIZE)
+    print(f"{indent}{COLORS[color]}{message}{RESET}")
+
+def print_line(msg: str, color: str = 'GREEN') -> None:
+    """Print a centered green separator line with a message."""
+    width = 60
+    formatted_msg = msg.center(width - 22)
+    print(f"{COLORS[color]}{'-' * 10} {formatted_msg} {'-' * 10}{RESET}")
+
+
+# ==========================================================
+# === Global Scope (Scope 0) ===============================
+# ==========================================================
+GLOBAL_VAR: str = "I am a global variable (GLOBAL_VAR)"
+print_scope(0, "MAGENTA", f"[Scope 0] GLOBAL_VAR: {GLOBAL_VAR}")
+
+
+def my_square(x: Any) -> Optional[float]:
+    """Demonstrates logical scope nesting while computing the square of a float."""
+    print_line("Entering my_square()")
+    print_scope(1, "BLUE", "[Scope 1] FUNCTION_VAR: I exist inside my_square")
+    print_scope(1, "BLUE", f"[Scope 1] GLOBAL_VAR: {GLOBAL_VAR}")
+
+    if x is None:
+        print_scope(2, "GREEN", "[Scope 2] x is None")
+        print_line("Exiting my_square()", "RED")
+        return None
 
     if isinstance(x, float):
-        # Conditional scope (Scope 2)
-        CONDITIONAL_VAR = "I exist inside the if-block"
-        print(f"{COLORS[2]}[Scope 2] CONDITIONAL_VAR: {CONDITIONAL_VAR}{RESET}")
-        print(f"{COLORS[2]}[Scope 2] x: {x}{RESET}")
+        print_scope(2, "GREEN", "[Scope 2] CONDITIONAL_VAR: I exist inside the if-block")
+        print_scope(2, "GREEN", f"[Scope 2] x: {x}")
+
+        if x > 0:
+            print_scope(3, "GREEN", "[Scope 3] x is positive")
+        else:
+            print_scope(3, "GREEN", "[Scope 3] x is zero or negative")
+        print_line("Exiting my_square()", "RED")
         return x ** 2
+
+    print_scope(3, "YELLOW", "[Scope 3] ELSE_VAR: I exist inside the else-block")
+
+    if isinstance(x, str):
+        print_scope(4, "RED", f"[Scope 4] x is a string: '{x}'")
+        print_scope(4, "RED", "[Scope 4] Strings cannot be squared.")
     else:
-        # Else scope (Scope 3)
-        ELSE_VAR = "I exist inside the else-block"
-        print(f"{COLORS[3]}[Scope 3] ELSE_VAR: {ELSE_VAR}{RESET}")
-        if x is None:
-            # Nested if scope (Scope 4)
-            NESTED_VAR = "I exist inside nested if-block"
-            print(f"{COLORS[4]}[Scope 4] NESTED_VAR: {NESTED_VAR}{RESET}")
-        print(f"'{x}' must be a float")
+        print_scope(4, "RED", f"[Scope 4] x has type {type(x).__name__}, not float or string.")
+        print_scope(4, "RED", "[Scope 4] Cannot compute square for this type.")
+    print_line("Exiting my_square()", "RED")
+    return None
+
+
+def main() -> None:
+    """Entry point for testing different logical scopes."""
+    cases = [
+        ("# Case 1: Passing a valid float : 3.0", 3.0),
+        ("# Case 2: Passing a string : 'Hello'", "Hello"),
+        ("# Case 3: Passing None : None", None),
+        ("# Case 4: Passing a list : [1, 2, 3]", [1, 2, 3]),
+    ]
+
+    for label, value in cases:
+        print_line(label)
+        result = my_square(value)
+        print(f"{COLORS['MAGENTA']}Result: {result}{RESET}\n")
 
 
 if __name__ == "__main__":
-    # Calling function with float
-    result = my_square(3.0)
-    print(f"{COLORS[0]}Result: {result}{RESET}")
-
-    # Calling function with non-float
-    my_square("hello")
+    main()
