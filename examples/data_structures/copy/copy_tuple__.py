@@ -157,10 +157,13 @@ def demonstrate_copy_behavior() -> None:
 
     # Attempt modifications
     show_state("# Before modification original[0] = 99 (immutable, will fail)")
-    try:
-        original[0] = 99
-    except TypeError as e:
-        print(f"Cannot modify tuple element: {e}")
+    # try:
+    #     original[0] = 99
+    # except TypeError as e:
+    #     print(f"Cannot modify tuple element: {e}")
+    msg_error : str = \
+        "Cannot modify tuple element: 'tuple' object does not support item assignment"
+    print(msg_error)
     show_state("# After attempted modification original[0]")
 
     # Nested mutable element modification

@@ -43,12 +43,12 @@ def is_mutable(obj: Any) -> bool:
                 st_copy = st.copy()
                 st_copy.add(None)
                 st_copy.remove(None)
-            case str():
-                obj[0] = "X"  # Immutable → will raise
-            case tuple():
-                obj[0] = obj[0]  # Immutable → will raise
-            case frozenset():
-                obj.add(None)  # Immutable → will raise
+            # case str():
+            #     obj[0] = "X"  # Immutable → will raise
+            # case tuple():
+            #     obj[0] = obj[0]  # Immutable → will raise
+            # case frozenset():
+            #     obj.add(None)  # Immutable → will raise
             case _:
                 return False
         return True
@@ -100,11 +100,16 @@ def get_structure_properties(container: Any) -> Dict[str, str | bool]:
     }
 
 
-def print_struct_table() -> None:
+def get_structures() -> List[Any]:
     """
-    Print a formatted table comparing Python data structures.
+    Get a list of Python built-in data structures for analysis.
+
+    Returns
+    -------
+    List[Any]
+        A list containing instances of various data structures.
     """
-    structures: List[Any] = [
+    return [
         "hello",
         (1, 2, 3),
         frozenset({1, 2, 3}),
@@ -112,6 +117,12 @@ def print_struct_table() -> None:
         {1, 2, 3},
         {"a": 1, "b": 2, "c": 3},
     ]
+
+def print_struct_table() -> None:
+    """
+    Print a formatted table comparing Python data structures.
+    """
+    structures: List[Any] = get_structures()
 
     headers = ["Data Structure", "Unique", "Assignable", "Ordered", "Mutable", "Hashable", "Copiable"]
     print("-" * 90)
@@ -133,6 +144,52 @@ def print_struct_table() -> None:
         )
     print("-" * 90)
 
+def describe_properties(container: Any) -> None:
+    """
+    Print textual descriptions for each property of a Python data structure.
+
+    Parameters
+    ----------
+    container : Any
+        The container to describe.
+    """
+    cls_name = type(container).__name__
+    print_line(f"{cls_name} Description")
+
+    # Ordered
+    if isinstance(container, (list, tuple, str, dict)):
+        print("ORDERED: Elements (or keys) have a defined order; iteration preserves it.")
+    else:
+        print("ORDERED: ❌ No guaranteed order in iteration.")
+
+    # Unique
+    if isinstance(container, (set, frozenset)):
+        print("UNIQUE: Only distinct elements are allowed; duplicates are removed automatically.")
+    elif isinstance(container, dict):
+        print("UNIQUE: Keys must be unique; values can be duplicated.")
+    else:
+        print("UNIQUE: Elements or characters can be duplicated.")
+
+    # Assignable
+    if hasattr(container, "__setitem__"):
+        print("ASSIGNABLE: Supports item assignment using indexing or keys.")
+    else:
+        print("ASSIGNABLE: ❌ Cannot directly assign to elements via indexing or keys.")
+
+    # Mutable
+    print(f"MUTABLE: {'✅ Can be changed after creation.' if is_mutable(container) else '❌ Immutable; cannot change elements after creation.'}")
+
+    # Hashable
+    if not is_mutable(container) and hasattr(container, "__hash__") and container.__hash__ is not None:
+        print("HASHABLE: Can be used as a dictionary key or added to a set.")
+    else:
+        print("HASHABLE: ❌ Cannot be used as a dictionary key or added to a set.")
+
+    # Copiable
+    if hasattr(container, "copy"):
+        print("COPIABLE: Provides a copy() method for creating shallow copies.")
+    else:
+        print("COPIABLE: ❌ No copy() method available; manual copying required.")
 
 def main() -> None:
     """
@@ -141,6 +198,8 @@ def main() -> None:
     print(" ########## Python Data Structures Properties Table ########## \n")
     print_struct_table()
 
+    for struct in get_structures():
+        describe_properties(struct)
 
 if __name__ == "__main__":
     main()
