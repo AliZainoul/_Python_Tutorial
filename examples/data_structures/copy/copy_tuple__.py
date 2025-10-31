@@ -1,112 +1,181 @@
 """
-Tuple objects are: 
-    subscriptable, but not assignable 
-    and no methods are allowing to modify them
-    hence they are immutable (not modifiable)
+copy_tuple__.py
+=================
+
+Demonstrates the difference between:
+- Assignment copy
+- Operator copy ([:])
+- Shallow copy (.copy()) ❌ Not applicable for tuples
+- Deep copy (copy.deepcopy())
+
+It prints clear, aligned tables showing how changes in the original tuple
+affect each type of copy, using pprint for neat multi-line formatting.
 """
 
-import copy # for deepcopy function
+import copy
+import pprint
 
-# Creating original list object
-l = [2,3]
-original_tuple = (1, l, 4)
+# ============================================================
+# CONSTANTS
+# ============================================================
 
-# Object assigning_copy points to the same memory address of original_tuple
-# Therefore: each modification impacting original_tuple will impact assigning_copy and vice versa
-assigning_copy = original_tuple 
-# CLEAR
+COLUMN_TITLES = [
+    "Original tuple",
+    "Assigning Copy",
+    "Operator Copy",
+    "Shallow Copy",
+    "Deep Copy",
+]
+COLUMN_WIDTHS = [35, 35, 35, 35, 35]
 
-# Objects operator_copy and shallow_copy are superficial copies of original_tuple
-# Therefore:    each modification done to the TOP LEVEL of original_tuple objects will *NOT* impact 
-#               operator_copy and shallow_copy and vice versa
-# Whereas:      each modification done to the NESTED LEVELS of original_tuple objects will impact 
-#               operator_copy and shallow_copy and vice versa
-operator_copy = original_tuple[:] # a whole copy of original_tuple
-# shallow_copy = original_tuple.copy() # a whole copy of original_tuple
-# CLEAR
+TABLE_FORMAT = " ".join(f"{{:<{w}}}" for w in COLUMN_WIDTHS)
 
-# Object deep_copy is a deep copy of original_tuple, deep_copy is totally independant of original_tuple
-# Therefore: each modification done to original_tuple will *NOT* impact deep_copy and vice versa
-deep_copy = copy.deepcopy(original_tuple) # a whole copy of original_tuple
-# CLEAR
+CHAR_MAIN_SEP_ = "#"
+CHAR_MAIN_SEP = "="
+CHAR_SUB_SEP = "-"
+LINE_LENGTH = sum(COLUMN_WIDTHS) + len(COLUMN_WIDTHS) - 1
 
-def test_tuple_copy():
-    print("id(original_tuple) == id(assigning_copy)", id(original_tuple) == id(assigning_copy))
-    print("id(original_tuple) == id(operator_copy)", id(original_tuple) == id(operator_copy))
-    # print("id(original_tuple) == id(shallow_copy)", id(original_tuple) == id(shallow_copy))
-    print("id(original_tuple) == id(deep_copy)", id(original_tuple) == id(deep_copy))
+PP = pprint.PrettyPrinter(width=30, compact=True)
 
 
-def test_nested_tuple_copy():
-    print("id(original_tuple[1]) == id(assigning_copy[1])", id(original_tuple[1]) == id(assigning_copy[1]))
-    print("id(original_tuple[1]) == id(operator_copy[1])", id(original_tuple[1]) == id(operator_copy[1]))
-    # print("id(original_tuple[1]) == id(shallow_copy[1])", id(original_tuple[1]) == id(shallow_copy[1]))
-    print("id(original_tuple[1]) == id(deep_copy[1])", id(original_tuple[1]) == id(deep_copy[1]))
+# ============================================================
+# GENERIC UTILITIES
+# ============================================================
+
+def print_separator(char: str = CHAR_SUB_SEP) -> None:
+    print(char * LINE_LENGTH)
 
 
-def test_references_tuple():
-    print("ID original_tuple: ", id(original_tuple))
-    print("ID assigning_copy: ", id(assigning_copy))
-    print("ID operator_copy: ", id(operator_copy))
-    # print("ID shallow_copy: ", id(shallow_copy))
-    print("ID deep_copy: ", id(deep_copy))
-
-def test_nested_references_tuple():
-    print("ID original_tuple[1]: ", id(original_tuple[1]))
-    print("ID assigning_copy[1]: ", id(assigning_copy[1]))
-    print("ID operator_copy[1]: ", id(operator_copy[1]))
-    # print("ID shallow_copy[1]: ", id(shallow_copy[1]))
-    print("ID deep_copy[1]: ", id(deep_copy[1]))
-
-def printLine():
-    print("------------------------------------------------------")
-
-def tuple_tests():
-    print('\n')
-    print("---------------------------Launching tuple Tests---------------------------")
-    test_tuple_copy()
-    printLine()
-    test_nested_tuple_copy()
-    printLine()
-    test_references_tuple()
-    printLine()
-    test_nested_references_tuple()
-    print("---------------------------End tuple Tests---------------------------")
-    print('\n')
-
-tuple_tests()
-
-print("---------------------------------------------------------------------------------------------------")
-print("# Original tuple | # Assigning Copy     | # Operator Copy | # Shallow Copy |  # Deep Copy |")
-print("---------------------------------------------------------------------------------------------------")
-print("# Before modification original_tuple[1][0] = 69")
-print(original_tuple, " | ", assigning_copy, " | ", operator_copy, " | NOT CONCERNED | ", deep_copy, " | ")
-original_tuple[1][0] = 69
-print("---------------------------------------------------------------------------------------------------")
-print("# After modification original_tuple[1][0] = 69")
-print(original_tuple, " | ", assigning_copy, " | ", operator_copy, " | NOT CONCERNED | ", deep_copy, " | ")
-print("---------------------------------------------------------------------------------------------------")
-
-'''
-# OUTPUT:
-
----------------------------------------------------------------------------------------------------
-# Original tuple | # Assigning Copy     | # Operator Copy | # Shallow Copy |  # Deep Copy |
----------------------------------------------------------------------------------------------------
-# Before modification original_tuple[1][0] = 69
-(1, [2, 3], 4)  |  (1, [2, 3], 4)  |  (1, [2, 3], 4)  | NOT CONCERNED |  (1, [2, 3], 4)  | 
----------------------------------------------------------------------------------------------------
-# After modification original_tuple[1][0] = 69
-(1, [69, 3], 4)  |  (1, [69, 3], 4)  |  (1, [69, 3], 4)  | NOT CONCERNED |  (1, [2, 3], 4)  | 
----------------------------------------------------------------------------------------------------
-'''
+def format_obj(obj) -> str:
+    if isinstance(obj, (tuple, list)):
+        return PP.pformat(obj)
+    return str(obj)
 
 
-'''
-En résumé, les copies superficielles ne dupliquent pas les objets imbriqués, 
-de sorte que les modifications apportées aux objets imbriqués seront reflétées 
-dans toutes les copies, mais les modifications apportées aux objets de plus haut niveau 
-(comme les éléments du tuple) ne le seront pas.
+def print_table_row(*cols) -> None:
+    formatted_cols = [format_obj(c) for c in cols]
+    print(TABLE_FORMAT.format(*formatted_cols))
 
-Ici on modifie la liste tout simplement !
-'''
+
+def print_table_header() -> None:
+    print_separator(CHAR_MAIN_SEP)
+    print_table_row(*COLUMN_TITLES)
+    print_separator(CHAR_MAIN_SEP)
+
+
+def print_section(title: str) -> None:
+    print(f"\n{CHAR_MAIN_SEP_ * 20} {title} {CHAR_MAIN_SEP_ * 20}")
+
+
+# ============================================================
+# COPY LOGIC
+# ============================================================
+
+def create_all_copies():
+    """
+    Create the original tuple and its various copy forms.
+
+    Returns
+    -------
+    tuple : (original, assigning, operator_copy, shallow_copy, deep_copy)
+    """
+    original        : tuple = (1, [2, 3], 4)
+    assigning       : tuple = original                # same object
+    operator_copy   : tuple = original[:]            # shallow copy via slicing
+    shallow_copy    = "❌ Not supported for tuples"  # .copy() not available
+    deep_copy       : tuple = copy.deepcopy(original)
+
+    return (
+        original,
+        assigning,
+        operator_copy,
+        shallow_copy,
+        deep_copy
+    )
+
+
+# ============================================================
+# INSPECTION UTILITIES
+# ============================================================
+
+def show_reference_tests(original, assigning, operator_copy, shallow_copy, deep_copy) -> None:
+    print_section("REFERENCE TESTS (Top-level)")
+    print(f"id(original) == id(assigning):     {id(original) == id(assigning)}")
+    print(f"id(original) == id(operator_copy): {id(original) == id(operator_copy)}")
+    print(f"id(original) == id(shallow_copy):  ❌ Not applicable")
+    print(f"id(original) == id(deep_copy):     {id(original) == id(deep_copy)}")
+
+    print_section("REFERENCE TESTS (Nested key [1])")
+    # element [1] is a mutable list inside the tuple
+    print(f"id(original[1]) == id(assigning[1]):     {id(original[1]) == id(assigning[1])}")
+    print(f"id(original[1]) == id(operator_copy[1]): {id(original[1]) == id(operator_copy[1])}")
+    print(f"id(original[1]) == id(shallow_copy[1]):  ❌ Not applicable")
+    print(f"id(original[1]) == id(deep_copy[1]):     {id(original[1]) == id(deep_copy[1])}")
+
+
+def show_object_ids(original, assigning, operator_copy, shallow_copy, deep_copy) -> None:
+    print_section("OBJECT IDS (Top-level)")
+    for name, obj in zip(COLUMN_TITLES, [original, assigning, operator_copy, shallow_copy, deep_copy]):
+        if isinstance(obj, tuple):
+            print(f"{name:<20}: {id(obj)}")
+        else:
+            print(f"{name:<20}: {obj}")
+
+    print_section("OBJECT IDS (Nested element [1])")
+    for name, obj in zip(COLUMN_TITLES, [original, assigning, operator_copy, shallow_copy, deep_copy]):
+        if isinstance(obj, tuple):
+            print(f"{name:<20}: {id(obj[1])}")
+        else:
+            print(f"{name:<20}: ❌ Not applicable")
+
+
+# ============================================================
+# TABLE DISPLAY
+# ============================================================
+
+def show_table_state(label: str, tuples_tuple: tuple) -> None:
+    print(label)
+    print_table_row(*tuples_tuple)
+    print_separator(CHAR_SUB_SEP)
+
+
+# ============================================================
+# MAIN DEMONSTRATION LOGIC
+# ============================================================
+
+def demonstrate_copy_behavior() -> None:
+    original, assigning, operator_copy, shallow_copy, deep_copy = create_all_copies()
+
+    show_reference_tests(original, assigning, operator_copy, shallow_copy, deep_copy)
+    show_object_ids(original, assigning, operator_copy, shallow_copy, deep_copy)
+
+    print_section("TABLE OF VALUES")
+    print_table_header()
+
+    def show_state(msg: str) -> None:
+        show_table_state(msg, (original, assigning, operator_copy, shallow_copy, deep_copy))
+
+    # Attempt modifications
+    show_state("# Before modification original[0] = 99 (immutable, will fail)")
+    try:
+        original[0] = 99
+    except TypeError as e:
+        print(f"Cannot modify tuple element: {e}")
+    show_state("# After attempted modification original[0]")
+
+    # Nested mutable element modification
+    show_state("# Before modification original[1][0] = 69")
+    original[1][0] = 69
+    show_state("# After modification original[1][0] = 69")
+
+
+# ============================================================
+# ENTRY POINT
+# ============================================================
+
+def main() -> None:
+    demonstrate_copy_behavior()
+
+
+if __name__ == "__main__":
+    main()
