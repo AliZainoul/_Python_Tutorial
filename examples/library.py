@@ -125,32 +125,23 @@ def find_book(library: dict, book_name: str):
 
 def _find_book(library: dict, prompt: str) -> list:
     """
-    Finds a book in the library by its name.
+    Finds books in the library where the prompt matches either the book name
+    or any value in the book details (author or year as string).
     
     Args:
     library (dict): The library dictionary.
-    book_name (str): The name of the book to find.
+    prompt (str): The search string to look for in book names or details.
     
     Returns:
-    list of books (list): All books if prompt found in book details, otherwise an empty list.
+    list: A list of tuples (book_name, book_specs) matching the prompt.
     """
-
-    # TODO nested comprehension lists
-
-    l = []
-    for book_name, book_specs in library.items():
-        if prompt in book_name:
-            l.append((book_name, book_specs))
-        
-        for author, year in book_specs.items():
-            print(author)
-            print(year)
-            if prompt in author or prompt in book_name:
-                l.append((book_name, book_specs))
-
-    return l
-
-    # return [(book_name, book_specs) for (book_name, book_specs) in library.items() if prompt in book_name]
+    # Nested comprehension: check prompt in book name OR in any detail value (converted to str)
+    return [
+        (book_name, book_specs)
+        for book_name, book_specs in library.items()
+        if prompt.lower() in book_name.lower() 
+        or any(prompt.lower() in str(value).lower() for value in book_specs.values())
+    ]
 
 def is_present(library: dict, book_name: str) -> bool:
     """
