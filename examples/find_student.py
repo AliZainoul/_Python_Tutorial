@@ -121,4 +121,3 @@ print(find_student(name="michel", age = 30))
 print(find_student(name="mi", name_op="sw", age = 30, age_op=">"))
 print(find_student(id=1, id_op=">", age = 30))
 print(find_student(id=1, id_op=">", age = 40, age_op="<", name="m", name_op = "sw"))
-
