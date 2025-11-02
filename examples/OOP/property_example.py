@@ -38,5 +38,8 @@ print(f"With property getter : {p.name}\n") # Calls the getter get_name inside p
 
 print(type(p.name)) # OUTPUT: <class 'str'> ; prints class str why ? 
 # Because of the fact that it calls get_name and the latter returns a string object
+
+print(p.__dict__) # OUTPUT: {'_Person__name': 'Ali'} ; prints the private member __name
+print(Person.name) # OUTPUT: <property object at 0x104f4d5e0> ; prints class property why?
 print(type(Person.name)) # OUTPUT: <class 'property'> ; prints class property why?
 # Because of the fact that "name" is a CLASS VARIABLE of type: object of class "property"
