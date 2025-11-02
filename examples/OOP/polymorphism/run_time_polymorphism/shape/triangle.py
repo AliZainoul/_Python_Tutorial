@@ -14,5 +14,5 @@ class Triangle:
     def perimeter(self) -> float:
         return self.side_1 + self.side_2 + self.side_3
 
-    def __repr__(self) -> str:
-        return f"({id(self) = }, {(self.side_1, self.side_2, self.side_3) =}, {self.area() = }, {self.perimeter() = })"
+    def __str__(self) -> str:
+        return f"Triangle({id(self) = }, {(self.side_1, self.side_2, self.side_3) = }, {self.area() = }, {self.perimeter() = })"

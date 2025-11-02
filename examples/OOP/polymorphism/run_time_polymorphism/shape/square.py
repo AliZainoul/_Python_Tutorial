@@ -10,5 +10,5 @@ class Square(Shape):
     def perimeter(self) -> float:
         return 4 * (self.side)
 
-    def __repr__(self) -> str:
-        return f"({id(self) = }, {self.side = }, {self.area() = }, {self.perimeter() = })"
+    def __str__(self) -> str:
+        return f"Square({id(self) = }, {self.side = }, {self.area() = }, {self.perimeter() = })"

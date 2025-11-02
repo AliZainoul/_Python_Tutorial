@@ -11,6 +11,6 @@ class Circle(Shape):
     def perimeter(self) -> float:
         return 2 * math.pi * self.radius
     
-    def __repr__(self) -> str:
-        return f"({id(self) = }, {self.radius = }, {self.area() = }, {self.perimeter() = })"
+    def __str__(self) -> str:
+        return f"Circle({id(self) = }, {self.radius = }, {self.area() = }, {self.perimeter() = })"
         

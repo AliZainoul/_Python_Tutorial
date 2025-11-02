@@ -11,5 +11,5 @@ class Rectangle(Shape):
     def perimeter(self) -> float:
         return 2 * (self.length + self.width)
 
-    def __repr__(self) -> str:
-        return f"({id(self) = }, {self.length = }, {self.width = }, {self.area() = }, {self.perimeter() = })"
+    def __str__(self) -> str:
+        return f"Rectangle({id(self) = }, {self.length = }, {self.width = }, {self.area() = }, {self.perimeter() = })"
