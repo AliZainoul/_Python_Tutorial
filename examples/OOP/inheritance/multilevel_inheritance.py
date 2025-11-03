@@ -1,3 +1,6 @@
+# ==============================
+# Multilevel Inheritance Example
+# ==============================
 class A:
     """Base class A representing the root of a multilevel inheritance chain.
 
@@ -63,15 +66,70 @@ class C(B):
             f"C: member_a = {self.member_a}, member_b = {self.member_b}, member_c = {self.member_c}"
         )
 
+# Real example:
+class Vehicle:
+    """Class Vehicle represents a generic vehicle with a make."""
+    def __init__(self, make):
+        """Initialize an instance of class Vehicle.
+
+        Args:
+            make: The make of the vehicle.
+        """
+        self.__make = make
+
+    def get_make(self):
+        """Get the make of the vehicle."""
+        return self.__make
+    
+class Car(Vehicle):
+    """Class Car represents a Car, inheriting from Vehicle."""
+    def __init__(self, make, model):
+        """Initialize an instance of class Car.
+        Args:
+            model: The model of the car.
+        """
+        super().__init__(make)
+        self.__model = model
+    
+    def get_model(self):
+        """Get the model of the car."""
+        return self.__model
+    
+class ElectricCar(Car):
+    """Class ElectricCar represents an Electric Car, inheriting from Car."""
+    def __init__(self, make, model, battery_capacity):
+        """Initialize an instance of class ElectricCar.
+        Args:
+            battery_capacity: The battery capacity of the electric car.
+        """
+        super().__init__(make, model)
+        self.__battery_capacity = battery_capacity
+    
+    def get_battery_capacity(self):
+        """Get the battery capacity of the electric car."""
+        return self.__battery_capacity
 
 def main():
     """Demonstrate multilevel inheritance (A → B → C)."""
+    print()
+    print("--- Multilevel Inheritance Example ---") 
+    print("Demonstrate multilevel inheritance (A → B → C).")
     c = C(1, 2, 3)
     c.show_a()
     c.show_b()
     c.show_c()
-    print(C.__mro__)
+    print(f"{C.__mro__ = }")
+    print()
 
+    # Real example :
+    print("--- Multilevel Inheritance (Real) Example ---")
+    print("Demonstrate multilevel inheritance using classes (ElectricCar → Car → Vehicle).")
+    electric_car = ElectricCar("Tesla", "Model S", "100 kWh")
+    print(f"{electric_car.get_make()= }")
+    print(f"{electric_car.get_model()= }")
+    print(f"{electric_car.get_battery_capacity()= }")
+    print(f"{ElectricCar.__mro__ = }")
+    print()
 
 if __name__ == "__main__":
     main()
