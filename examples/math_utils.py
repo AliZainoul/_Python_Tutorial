@@ -14,7 +14,7 @@ def add(num_1: int, num_2: int) -> int:
 
 def main() -> None:
     # Example usage
-    result = add(5, 7)
+    result : int = add(5, 7)
     print(f"The sum of 5 and 7 is: {result}")
 
 if __name__ == "__main__":
