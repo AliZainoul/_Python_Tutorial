@@ -21,7 +21,7 @@ import pprint
 
 # Column configuration
 COLUMN_TITLES = [
-    "Original dict",
+    "Original list",
     "Assigning Copy",
     "Operator Copy",
     "Shallow Copy",

@@ -26,17 +26,18 @@ print("Class of the tuple:", my_tuple.__class__)
 print("__getitem__ method:", my_tuple.__getitem__(2))
 # equivalent to: print("__getitem__ method:", my_tuple[2])
 
+# __str__(): Returns a string representation of the tuple
+print("String representation of the tuple:", my_tuple.__str__())
+# equivalent to: print("String representation of the tuple:", str(my_tuple))
+
 # __repr__(): Returns a string representation of the tuple
 print("String representation of the tuple:", my_tuple.__repr__())
 # equivalent to: print("String representation of the tuple:", repr(my_tuple))
+# repr(my_tuple) : tuple((1, 2, 3, 4, 5))
 
 # __hash__(): Returns the hash value of the tuple
 print("Hash value of the tuple:", my_tuple.__hash__())
 # equivalent to: print("Hash value of the tuple:", hash(my_tuple))
-
-# __str__(): Returns a string representation of the tuple
-print("String representation of the tuple:", my_tuple.__str__())
-# equivalent to: print("String representation of the tuple:", str(my_tuple))
 
 # __eq__(): Compares the tuple with another tuple for equality
 print("Equality comparison with another tuple:", my_tuple.__eq__((1, 2, 3, 4, 5)))
@@ -47,8 +48,8 @@ print("Not equality comparison with another tuple:", my_tuple.__ne__((1, 2, 3, 4
 # equivalent to: print("__ne__ method:", my_tuple != (1, 2, 3, 4))
 
 # __lt__(): Compares the tuple with another tuple for less than
-print("Less than comparison with another tuple:", my_tuple.__lt__((2, 3, 4, 5, 6)))
-# equivalent to: print("Less than comparison with another tuple:", (my_tuple <(2, 3, 4, 5, 6)))
+print("Less than comparison with another tuple:", my_tuple.__lt__((1, 2, 2, 2)))
+# equivalent to: print("Less than comparison with another tuple:", (my_tuple <(1, 2, 2, 2)))
 
 # __le__(): Compares the tuple with another tuple for less than or equal to
 print("Less than or equal to comparison with another tuple:", my_tuple.__le__((1, 2, 3, 4, 5)))
@@ -68,8 +69,12 @@ print("Elements of the tuple using iterator:")
 for item in iterator:
     print(item)
 
+for el in my_tuple:
+    print(el)
+
 # __getitem__(): Returns the value at the specified index
 print("Value at index 2:", my_tuple.__getitem__(2))
+# equivalent to: print("Tuple accesing elements via index:", my_tuple[2])
 
 # __mul__(): Returns a new tuple with elements repeated a specified number of times
 print("Tuple multiplied by 2:", my_tuple.__mul__(2))
@@ -81,8 +86,7 @@ print("2 multiplied by tuple:", my_tuple.__rmul__(2))
 
 # __contains__(): Checks if a value is present in the tuple
 print("Is 3 present in the tuple?", my_tuple.__contains__(3))
-# equivalent to: print("Is 3 present in the tuple?", (3 in my_tuple))
-
+# equivalent to: print(f"Is 3 present in the tuple ? {3 in my_tuple}")
 
 """
 import sys
