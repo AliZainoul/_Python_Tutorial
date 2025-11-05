@@ -59,44 +59,56 @@ print("Joined string:", joined_string)
 
 # __len__(): Returns the length of the string
 print("__len__ method:", my_string.__len__())
+# Equivalent to : print("__len__ method:", len(my_string))
 
 # __getitem__(): Returns the character at the specified index
 print("__getitem__ method:", my_string.__getitem__(2))
+# Equivalent to : print("__getitem__ method:", my_string[2])
 
 # __repr__(): Returns a string representation of the string
 print("String representation of the string:", my_string.__repr__())
+# Equivalent to : print("__repr__ method:", repr(my_string))
 
 # __hash__(): Returns the hash value of the string
 print("Hash value of the string:", my_string.__hash__())
+# Equivalent to : print("__hash__ method:", hash(my_string))
 
 # __str__(): Returns a string representation of the string
 print("String representation of the string:", my_string.__str__())
+# Equivalent to : print("__str__ method:", str(my_string))
 
 # __eq__(): Compares the string with another string for equality
 print("Equality comparison with another string:", my_string.__eq__("hello"))
+# Equivalent to : print("__eq__ method:", my_string == "hello")
 
 # __ne__(): Compares the string with another string for not equality
 print("Not equality comparison with another string:", my_string.__ne__("world"))
+# Equivalent to : print("__ne__ method:", my_string != "hello")
 
 # __lt__(): Compares the string with another string for less than
 print("Less than comparison with another string:", my_string.__lt__("world"))
+# Equivalent to : print("__lt__ method:", my_string < "hello")
 
 # __le__(): Compares the string with another string for less than or equal to
 print("Less than or equal to comparison with another string:", my_string.__le__("hello"))
+# Equivalent to : print("__le__ method:", my_string <= "hello")
 
 # __gt__(): Compares the string with another string for greater than
 print("Greater than comparison with another string:", my_string.__gt__("hello"))
+# Equivalent to : print("__gt__ method:", my_string > "hello")
 
 # __ge__(): Compares the string with another string for greater than or equal to
 print("Greater than or equal to comparison with another string:", my_string.__ge__("hello"))
+# Equivalent to : print("__ge__ method:", my_string >= "hello")
 
 # __iter__(): Returns an iterator over the characters of the string
 iterator = my_string.__iter__()
+# Equivalent to : iterator = iter(my_string)
+
 print("Characters of the string using iterator:")
 for char in iterator:
     print(char)
 
 # __contains__(): Checks if a substring is present in the string
 print("Is 'lo' present in 'hello'?", my_string.__contains__("lo"))
-
-# Your additional methods here...
+# Equivalent to : print("Is 'lo' present in 'hello'?", "lo" in my_string)
