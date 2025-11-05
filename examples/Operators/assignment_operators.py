@@ -5,31 +5,31 @@ x = 5    # Binary: 0101
 y = 3    # Binary: 0011
 
 # Addition assignment
-x += y
+x += y # <==> x = x + y 
 print(f"After addition assignment: x = {x}")  # Displays: After addition assignment: x = 8
 
 # Subtraction assignment
-x -= y
+x -= y # <==> x = x - y 
 print(f"After subtraction assignment: x = {x}")  # Displays: After subtraction assignment: x = 5
 
 # Multiplication assignment
-x *= y
+x *= y # <==> x = x * y 
 print(f"After multiplication assignment: x = {x}")  # Displays: After multiplication assignment: x = 15
 
 # Division assignment
-x /= y
+x /= y # <==> x = x / y 
 print(f"After division assignment: x = {x}")  # Displays: After division assignment: x = 5.0
 
 # Modulus assignment
-x %= y
+x %= y # <==> x = x % y 
 print(f"After modulus assignment: x = {x}")  # Displays: After modulus assignment: x = 2.0
 
 # Exponentiation assignment
-x **= y
+x **= y # <==> x = x ** y 
 print(f"After exponentiation assignment: x = {x}")  # Displays: After exponentiation assignment: x = 8.0
 
 # Floor division assignment
-x //= y
+x //= y # <==> x = x // y 
 print(f"After floor division assignment: x = {x}")  # Displays: After floor division assignment: x = 2.0
 
 # Back to the int type

@@ -17,3 +17,8 @@ result_not_x = not x
 result_not_y = not y
 print(f"Logical NOT of {x}: {result_not_x}")
 print(f"Logical NOT of {y}: {result_not_y}")
+
+age: int = 36
+rich = True
+if age >= 18 and rich :
+    print("Prospect the client.")
