@@ -64,6 +64,8 @@ def reverse_string_with_slicing(s: str) -> str:
         s[::-1]
         s[len(s)-1::-1]
         s[-1::-1]
+        s[stArt := 0: stOp: stEp := 1]
+        # [ range(stArt := 0, stOp, stEp := 1) ]
 
     Example
     -------
