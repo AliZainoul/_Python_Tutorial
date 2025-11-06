@@ -110,10 +110,10 @@ class ElectricCar(Car):
         return self.__battery_capacity
 
 def main():
-    """Demonstrate multilevel inheritance (A → B → C)."""
+    """Demonstrate multilevel inheritance (C → B → A)."""
     print()
     print("--- Multilevel Inheritance Example ---") 
-    print("Demonstrate multilevel inheritance (A → B → C).")
+    print("Demonstrate multilevel inheritance (C → B → A).")
     c = C(1, 2, 3)
     c.show_a()
     c.show_b()
