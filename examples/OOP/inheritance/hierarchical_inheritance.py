@@ -282,7 +282,7 @@ def main():
     """Demonstrate a hybrid inheritance structure combining hierarchical and multilevel patterns."""
 
     print("--- Hierarchical Inheritance (Generic) ---")
-    print("Demonstrate hierarchical + multilevel inheritance (A → B → C / D and A → E → F).")
+    print("Demonstrate hierarchical + multilevel inheritance (C/D → B → A  and F → E → A).")
 
     c = C(10, 20, 30)
     c.show_a()
