@@ -7,23 +7,23 @@ class MyClass:
     
     # Constructor
     def __init__(self, value: int):
-        self.instance_variable = value
+        self.instance_member_variable = value
 
     # Regular Methods
-    def print_instance_variable(self):
-        print("object.instance_variable:", self.instance_variable)
+    def print_instance_member_variable(self):
+        print(f"object.instance_member_variable: {self.instance_member_variable = }")
 
     def print_class_variable_of_obj(self):
-        print("self.class_variable:", self.class_variable)
+        print(f"self.class_variable: {self.class_variable = }")
 
 
     # Static Methods
     @staticmethod
     def print_all_info(obj1: 'MyClass', obj2: 'MyClass'):
         MyClass.print_class_variable()      
-        obj1.print_instance_variable()      
+        obj1.print_instance_member_variable()      
         obj1.print_class_variable_of_obj()         
-        obj2.print_instance_variable()      
+        obj2.print_instance_member_variable()      
         obj2.print_class_variable_of_obj()   
         print(id(MyClass.class_variable))
         print(id(obj1.class_variable))  
@@ -33,7 +33,7 @@ class MyClass:
     # Class Methods
     @classmethod
     def print_class_variable(cls):
-        print("cls.class_variable:", cls.class_variable)
+        print(f"cls.class_variable: {cls.class_variable = }")
 
 
 
