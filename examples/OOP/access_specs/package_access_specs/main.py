@@ -19,8 +19,8 @@ print(o._indirect_access_to__private_display_infos())
 # BECAUSE OF THE FACT THAT WE ARE IN THE SAME PACKAGE *AND* 
 # THE FACT THAT WE'RE USING A NAME MANGLING DIRECT ACCESS: 
 # THE ACCESS TO PRIVATE MEMBERS AND METHODS IS *GRANTED*
-print(o._MyClass__private_attribute)
-print(o._MyClass__private_display_infos())
+# print(o._MyClass__private_attribute)
+# print(o._MyClass__private_display_infos())
 
 
 

@@ -11,4 +11,3 @@ class TestClass:
     
     def access_private_in_A(self):
         return self.__private_method(), self.__private_attr
-
