@@ -69,12 +69,12 @@ class Cat(Animal):
         return "Meo_www_catalks_cow!"
     
 def main():
-    """Demonstrate simple inheritance (A → B)."""
+    """Demonstrate simple inheritance (B → A)."""
     # Generic example : Demonstrate inheritance using classes A and B.
     print()
     print("--- Simple Inheritance Example ---") 
     print("Generic Example:")
-    print("Demonstrate inheritance using classes A and B (A → B).")
+    print("Demonstrate inheritance using classes A and B (B → A).")
     print("B inherits from A.")
     b = B(1, 2)
     print(f"{b.get_member_1() = }")
