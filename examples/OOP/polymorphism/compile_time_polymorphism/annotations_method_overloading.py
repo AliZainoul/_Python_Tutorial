@@ -101,13 +101,31 @@ class MathOperations:
             case _:
                 raise TypeError(f"Unsupported types for add method: {type(a)} + {type(b)}")
 
+    # @staticmethod
+    # def add(a, b):
+    #     try:
+    #         if isinstance(a, int) and isinstance(b, int):
+    #             print("Calls int add method version.")
+    #             return a + b
+    #         if isinstance(a, float) and isinstance(b, float):
+    #             print("Calls float add method version.")
+    #             return a + b
+    #         if isinstance(a, str) and isinstance(b, str):
+    #             print("Calls str add method version.")
+    #             return a + b
+    #         if isinstance(a, list) and isinstance(b, list):
+    #             print("Calls list add method version.")
+    #             return a + b
+    #     except TypeError as e:
+    #             print(f"Unsupported types for add method: {type(a)} + {type(b)}" + str(e))
 
 def main():
     print("\n")
     print("#" * 60)
     print("Example 1: Naive multiple static methods (Python overrides)")
     print("#" * 60)
-    print("Test naive overloading (only last 'add' survives in Python)")
+    print("Test naive overloading (only last 'add' method survives in Python)")
+
     # # Test integers
     # print(MathOperationsNaive.add(2, 3))  # Output: 5
 

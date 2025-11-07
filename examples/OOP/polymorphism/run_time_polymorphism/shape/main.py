@@ -17,7 +17,7 @@ t : Triangle = Triangle(3,4,5)
 
 # Duck typing for shape parameter
 def print_shape_info(shape: Shape | Rectangle | Square | Circle | Triangle) -> None:
-    print(shape)
+    print(str(shape))
 
 # List of various shapes
 list_of_shapes : list[Rectangle | Square | Circle | Triangle] = [r, s, c, t]
