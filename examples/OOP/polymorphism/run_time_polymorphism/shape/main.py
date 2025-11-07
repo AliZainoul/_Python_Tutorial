@@ -15,6 +15,7 @@ s : Square = Square(4)
 c : Circle = Circle(PI)
 t : Triangle = Triangle(3,4,5)
 
+
 # Duck typing for shape parameter
 def print_shape_info(shape: Shape | Rectangle | Square | Circle | Triangle) -> None:
     print(str(shape))

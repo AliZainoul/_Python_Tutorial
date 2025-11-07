@@ -14,6 +14,7 @@ class Point2D:
         - __truediv__ : / (point / scalar)
         - __eq__ : == (equality)
         - __ge__ : >= (component-wise)
+        - __gt__ : > (component-wise)
         - __len__ : returns number of attributes len(point)
         - __str__ / __repr__ : print-friendly representation
 
