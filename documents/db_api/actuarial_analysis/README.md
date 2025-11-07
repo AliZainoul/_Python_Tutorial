@@ -1,6 +1,6 @@
 # Actuarial Analysis Application
 
-A refactored SQLAlchemy-based application for actuarial analysis with realistic simulated insurance data.
+An SQLAlchemy-based application for actuarial analysis with realistic simulated insurance data.
 
 ## 🏗️ Architecture
 
@@ -16,7 +16,7 @@ This project follows clean architecture principles with clear separation of conc
 
 ### Project Structure
 
-```
+```md
 actuarial_analysis/
 │
 ├── config/                      # Configuration layer
@@ -105,35 +105,30 @@ class DataGenerationConfig:
 ## 🏛️ Key Components
 
 ### Models Layer
+
 ORM models representing database entities:
+
 - `Client`: Insurance customers (individual/corporate)
 - `Contract`: Insurance policies
 - `Prime`: Premium payments
 - `Claim`: Insurance claims
 
 ### Database Layer
+
 - `DatabaseManager`: Handles engine and session lifecycle
 - `DatabaseSetup`: Schema creation/migration utilities
 
 ### Services Layer
+
 - `DataGenerator`: Creates realistic simulated data
 - `AnalyticsService`: Computes actuarial indicators
 
 ### Utils Layer
+
 - `date_helpers`: Age calculation, date manipulation, bucket classification
 
 ## 🎯 Design Benefits
 
-### Compared to Original Monolithic Script
-
-**Before** (Original):
-- Single 400+ line file
-- Mixed concerns (models, data, logic, presentation)
-- Hard to test individual components
-- Difficult to extend or modify
-- Configuration scattered throughout
-
-**After** (Refactored):
 - ✅ 10+ focused modules (50-150 lines each)
 - ✅ Clear module boundaries
 - ✅ Easy to unit test
@@ -179,6 +174,7 @@ Simply update values in `config/settings.py` - all services will use new values.
 ## 🤝 Contributing
 
 When contributing, maintain:
+
 - Type hints on all functions
 - Docstrings (Google style)
 - Single responsibility per function/class
@@ -190,4 +186,5 @@ MIT License
 
 ## 👥 Authors
 
-Refactored for clean architecture and best practices.
+<claude.ai>
+<ali.zainoul.az@gmail.com>

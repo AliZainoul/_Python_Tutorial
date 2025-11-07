@@ -75,3 +75,6 @@ coverage.xml
 
 # Cython debug symbols
 cython_debug/
+
+# DB
+*.db

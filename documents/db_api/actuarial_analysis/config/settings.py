@@ -7,7 +7,7 @@ from typing import Dict
 @dataclass
 class DatabaseConfig:
     """Database configuration."""
-    url: str = "sqlite:///tp1_actuariat_fixed.db"
+    url: str = "sqlite:///actuarial_analysis.db"
     echo: bool = False
     future: bool = True
 
