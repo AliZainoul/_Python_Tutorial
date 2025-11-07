@@ -14,7 +14,7 @@ class Point2D:
         - __truediv__ : / (point / scalar)
         - __eq__ : == (equality)
         - __ge__ : >= (component-wise)
-        - __len__ : returns number of attributes
+        - __len__ : returns number of attributes len(point)
         - __str__ / __repr__ : print-friendly representation
 
     This mimics compile-time polymorphism in statically typed languages,
@@ -52,43 +52,43 @@ class Point2D:
         self.x = x
         self.y = y
 
-    def __add__(self, other):
+    def __add__(self: 'Point2D', other: 'Point2D'):
         """Overloads the + operator for Point2D + Point2D"""
         return Point2D(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
+    def __sub__(self: 'Point2D', other: 'Point2D'):
         """Overloads the - operator for Point2D - Point2D"""
         return Point2D(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, scalar):
+    def __mul__(self: 'Point2D', scalar: float):
         """Left multiplication: point * scalar"""
         return Point2D(self.x * scalar, self.y * scalar)
 
-    def __rmul__(self, scalar):
+    def __rmul__(self: 'Point2D', scalar: float):
         """Right multiplication: scalar * point"""
         return Point2D(scalar * self.x, scalar * self.y)
 
-    def __truediv__(self, scalar):
+    def __truediv__(self: 'Point2D', scalar: float):
         """Overloads the / operator for Point2D / scalar"""
         return Point2D(self.x / scalar, self.y / scalar)
 
-    def __eq__(self, other):
+    def __eq__(self: 'Point2D', other: 'Point2D'):
         """Overloads the == operator for Point2D equality"""
         return self.x == other.x and self.y == other.y
 
-    def __ge__(self, other):
+    def __ge__(self: 'Point2D', other: 'Point2D'):
         """Overloads the >= operator for Point2D (component-wise)"""
         return self.x >= other.x and self.y >= other.y
 
-    def __len__(self):
+    def __len__(self: 'Point2D'):
         """Overloads the len() function to return number of attributes"""
         return len(self.__dict__)
 
-    def __str__(self):
+    def __str__(self: 'Point2D'):
         """Overloads the str() function for print-friendly representation"""
         return f"Point2D({self.x}, {self.y})"
     
-    def __repr__(self):
+    def __repr__(self: 'Point2D'):
         """Overloads the repr() function for unambiguous representation"""
         return self.__str__()
 
