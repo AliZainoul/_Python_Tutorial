@@ -73,21 +73,16 @@ def get_structure_properties(container: Any) -> Dict[str, str | bool]:
     cls_name = type(container).__name__
 
     match container:
-        case str() | list() | tuple() | dict():
-            ordered = True
-        case _:
-            ordered = False
-
-    match container:
         case set() | frozenset():
             unique = True
         case _:
             unique = False
 
-    assignable = hasattr(container, "__setitem__")
-    mutable = is_mutable(container)
-    hashable = not mutable and hasattr(container, "__hash__") and container.__hash__ is not None
-    copiable = hasattr(container, "copy")
+    ordered     = hasattr(container, "__getitem__")
+    assignable  = hasattr(container, "__setitem__")
+    mutable     = is_mutable(container)
+    hashable    = not mutable and hasattr(container, "__hash__") and container.__hash__ is not None
+    copiable    = hasattr(container, "copy")
 
     return {
         "Data Structure": cls_name.upper(),
@@ -134,12 +129,12 @@ def print_struct_table() -> None:
         print(
             "{:<15} {:<12} {:<12} {:<12} {:<12} {:<12} {:<12}".format(
                 info["Data Structure"],
-                "✅" if info["Unique"] else "❌",
-                "✅" if info["Assignable"] else "❌",
-                "✅" if info["Ordered"] else "❌",
-                "✅" if info["Mutable"] else "❌",
-                "✅" if info["Hashable"] else "❌",
-                "✅" if info["Copiable"] else "❌",
+                "✅" if info["Unique"]      else "❌",
+                "✅" if info["Assignable"]  else "❌",
+                "✅" if info["Ordered"]     else "❌",
+                "✅" if info["Mutable"]     else "❌",
+                "✅" if info["Hashable"]    else "❌",
+                "✅" if info["Copiable"]    else "❌",
             )
         )
     print("-" * 90)
