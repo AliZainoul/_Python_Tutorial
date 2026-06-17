@@ -50,7 +50,7 @@ def main() :
 
     print("Accessing public attribute directly:", obj.public_attribute)
     print("Accessing protected attribute directly:", obj._protected_attribute)
-    # The following line will raise an AttributeError because __private_attribute is not accessible outside the
+    # The following line will raise an AttributeError because __private_attribute is not accessible outside the class
     # print("Accessing private attribute directly:", obj.__private_attribute)
     print(f"{obj.__dict__}")
 
